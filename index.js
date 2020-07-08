@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const router = require("./routes/Customer");
+const customer = require("./routes/Customer");
 const Appointment = require("./routes/Appointment");
 const Technican = require("./routes/Technican");
 
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/customer", router);
+app.use("/customer", customer);
 app.use("/appointment", Appointment);
 app.use("/technican", Technican);
 

@@ -7,15 +7,15 @@ router
   .route("/")
   .get((req, res, next) => {
     Customer.find()
-      .then((task) => {
-        res.json(task);
+      .then((customer) => {
+        res.json(customer);
       })
       .catch(next);
   })
   .post((req, res, next) => {
     Customer.create(req.body)
-      .then((task) => {
-        res.status(201).json(task);
+      .then((customer) => {
+        res.status(201).json(customer);
       })
       .catch(next);
   })

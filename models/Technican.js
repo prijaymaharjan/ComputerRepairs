@@ -2,17 +2,25 @@ const mongoose = require("mongoose");
 
 const Technincanschema = new mongoose.Schema(
   {
+    Name: {
+      type: String,
+      required: true,
+    },
     Email: {
       type: String,
-      require: true,
+      required: true,
     },
     Mobile: {
       type: Number,
-      require: true,
+      required: true,
     },
     Address: {
       type: String,
-      require: true,
+      required: true,
+    },
+    Gender: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

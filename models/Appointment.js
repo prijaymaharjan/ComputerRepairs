@@ -2,16 +2,17 @@ const mongoose = require("mongoose");
 
 const Appointmentschema = new mongoose.Schema(
   {
-    Customer: {
+    Customers: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Customer",
-    },
-    Technican: {
+    }],
+    Technicans: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Technican",
-    },
+    }],
     Date: {
       type: Date,
+      default: Date.now,
       required: true,
     },
     Address: {
@@ -19,9 +20,13 @@ const Appointmentschema = new mongoose.Schema(
       required: true,
     },
 
+    City: {
+      type: String,
+      required: true,
+    },
+
     Time: {
-      type: Number,
-      default: new Date().getTime(),
+      type: String,
       required: true,
     },
   },
