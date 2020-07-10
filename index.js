@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const customer = require("./routes/Customer");
 const Appointment = require("./routes/Appointment");
 const Technican = require("./routes/Technican");
-
+const Laptop = require("./routes/Laptop");
 require("dotenv/config");
 const port = 3000;
 const app = express();
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/customer", customer);
 app.use("/appointment", Appointment);
 app.use("/technican", Technican);
+app.use("/laptop", Laptop);
 
 mongoose.connect(
   process.env.DB_CONNECTION,
