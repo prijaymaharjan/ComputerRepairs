@@ -125,7 +125,7 @@ router
   .put((req, res, next) => {
     Appointment.findById(req.params.appointment_id)
       .then((appointment) => {
-        if (appointment.Customers.includes(req.params.customer_id)) {
+        if (appointment.customers.includes(req.params.customer_id)) {
           Customer.findByIdAndUpdate(
             req.params.customer_id,
             { $set: req.body },

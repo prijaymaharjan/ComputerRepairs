@@ -1,7 +1,7 @@
 const express = require("express");
 const Laptop = require("../models/Laptop");
 const Customer = require("../models/Customer");
-const router = express("router");
+const router = express.Router();
 
 //Laptop
 router

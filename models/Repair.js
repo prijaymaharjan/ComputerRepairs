@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 
 const Repairschema = new mongoose.Schema({
+  Laptops: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Laptop",
+    },
+  ],
+
   Detail: {
     type: String,
     required: true,
@@ -11,6 +18,10 @@ const Repairschema = new mongoose.Schema({
   },
   Totalamount: {
     type: Number,
+    required: true,
+  },
+  Date: {
+    type: Date,
     required: true,
   },
 });
