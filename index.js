@@ -4,13 +4,16 @@ const customer = require("./routes/Customer");
 const Appointment = require("./routes/Appointment");
 const Technican = require("./routes/Technican");
 const Laptop = require("./routes/Laptop");
-const Repair = require("./routes/Repair.js");
+const Repair = require("./routes/Repair");
 const Item = require("./routes/Item");
+const bodyParser = require("body-parser");
+
 require("dotenv/config");
 
 const port = 3000;
 const app = express();
 
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -19,7 +22,7 @@ app.use("/appointment", Appointment);
 app.use("/technican", Technican);
 app.use("/laptop", Laptop);
 app.use("/repair", Repair);
-app.use("item", Item);
+app.use("/item", Item);
 
 mongoose.connect(
   process.env.DB_CONNECTION,

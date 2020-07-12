@@ -62,7 +62,7 @@ router
 router
   .route("/:item_id/repairs")
   .get((req, res, next) => {
-    Item.findById(req.params.Item_id)
+    Item.findById(req.params.item_id)
       .then((item) => {
         res.json(item.Repairs);
       })
@@ -77,7 +77,7 @@ router
             item
               .save()
               .then((itemupdate) => {
-                res.status(201).json(itemupdate.Items);
+                res.status(201).json(itemupdate.Repairs);
               })
               .catch(next);
           })
