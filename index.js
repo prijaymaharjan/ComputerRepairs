@@ -6,17 +6,18 @@ const Technican = require("./routes/Technican");
 const Laptop = require("./routes/Laptop");
 const Repair = require("./routes/Repair");
 const Item = require("./routes/Item");
+const User = require("./routes/User");
 const bodyParser = require("body-parser");
 
 require("dotenv/config");
 
-const port = 3000;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/user", User);
 app.use("/customer", customer);
 app.use("/appointment", Appointment);
 app.use("/technican", Technican);
