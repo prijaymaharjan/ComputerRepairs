@@ -23,6 +23,7 @@ const UserSchema = mongoose.Schema(
     Role: {
       type: String,
       default: "basic",
+      emum: ["basic", "manager", "admin"],
     },
     Gender: {
       type: String,
@@ -37,7 +38,7 @@ const UserSchema = mongoose.Schema(
       required: true,
     },
     Mobile: {
-      type: String,
+      type: Number,
       required: true,
     },
     Address: {

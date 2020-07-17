@@ -22,6 +22,11 @@ const Customerschema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    Owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -8,22 +8,22 @@ const Repair = require("./routes/Repair");
 const Item = require("./routes/Item");
 const User = require("./routes/User");
 const bodyParser = require("body-parser");
+const auth = require("./routes/Auth");
 
 require("dotenv/config");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 app.use("/user", User);
-app.use("/customer", customer);
+app.use("/customer", auth.verifyUser, customer);
 app.use("/appointment", Appointment);
-app.use("/technican", Technican);
-app.use("/laptop", Laptop);
-app.use("/repair", Repair);
-app.use("/item", Item);
+app.use("/technican", auth.verifyUser, Technican);
+app.use("/laptop", auth.verifyUser, Laptop);
+app.use("/repair", auth.verifyUser, Repair);
+app.use("/item", auth.verifyUser, Item);
 
 mongoose.connect(
   process.env.DB_CONNECTION,

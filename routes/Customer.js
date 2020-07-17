@@ -1,25 +1,35 @@
 const express = require("express");
 const Customer = require("../models/Customer");
+const auth = require("../routes/Auth");
 
 const router = express.Router();
 
 router
   .route("/")
   .get((req, res, next) => {
-    Customer.find()
+    Customer.find({ Owner: req.user.id })
       .then((customer) => {
         res.json(customer);
       })
       .catch(next);
   })
   .post((req, res, next) => {
-    Customer.create(req.body)
+    let { Name, Address, Gender, Mobile, Email } = req.body;
+
+    Customer.create({
+      Name,
+      Address,
+      Gender,
+      Mobile,
+      Email,
+      Owner: req.user.id,
+    })
       .then((customer) => {
         res.status(201).json(customer);
       })
       .catch(next);
   })
-  .delete((req, res, next) => {
+  .delete(auth.verifyAdmin, (req, res, next) => {
     Customer.deleteMany()
       .then((reply) => {
         res.json(reply);
