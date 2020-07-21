@@ -3,8 +3,16 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const validation = require("../validation");
 
 router.post("/register", (req, res, next) => {
+  const { errors, isValid } = validation.registerInput(req.body);
+  if (!isValid) {
+    res.status(400).json({
+      status: "error",
+      message: errors,
+    });
+  }
   let {
     Username,
     Password,

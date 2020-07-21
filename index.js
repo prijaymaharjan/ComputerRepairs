@@ -9,6 +9,8 @@ const Item = require("./routes/Item");
 const User = require("./routes/User");
 const bodyParser = require("body-parser");
 const auth = require("./routes/Auth");
+const uploadRouter = require("./routes/upload");
+const path = require("path");
 
 require("dotenv/config");
 
@@ -24,6 +26,22 @@ app.use("/technican", auth.verifyUser, Technican);
 app.use("/laptop", auth.verifyUser, Laptop);
 app.use("/repair", auth.verifyUser, Repair);
 app.use("/item", auth.verifyUser, Item);
+app.use("/upload", uploadRouter);
+app.use(express.static(path.join(__dirname, "public")));
+app.use((req, res, next) => {
+  let err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.status(err.status || 500);
+  res.json({
+    status: "error",
+    message: err.message,
+  });
+});
 
 mongoose.connect(
   process.env.DB_CONNECTION,
