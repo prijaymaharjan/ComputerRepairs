@@ -1,6 +1,7 @@
 const express = require("express");
 const Repair = require("../models/Repair");
 const Laptop = require("../models/Laptop");
+const validation = require("../validation");
 
 const router = express.Router();
 
@@ -14,6 +15,13 @@ router
       .catch(next);
   })
   .post((req, res, next) => {
+    const { errors, isValid } = validation.repairInput(req.body);
+    if (!isValid) {
+      res.status(400).json({
+        status: "error",
+        message: errors,
+      });
+    }
     Repair.create(req.body)
       .then((repair) => {
         res.status(201).json(repair);

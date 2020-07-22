@@ -3,6 +3,7 @@ const Appointment = require("../models/Appointment");
 const Customer = require("../models/Customer");
 const Technican = require("../models/Technican");
 const router = express("Router");
+const validation = require("../validation");
 
 router
   .route("/")
@@ -14,6 +15,13 @@ router
       .catch(next);
   })
   .post((req, res, next) => {
+    const { errors, isValid } = validation.appointmentInput(req.body);
+    if (!isValid) {
+      res.status(400).json({
+        status: "error",
+        message: errors,
+      });
+    }
     Appointment.create(req.body)
       .then((appointment) => {
         res.status(201).json(appointment);

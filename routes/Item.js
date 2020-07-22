@@ -1,6 +1,7 @@
 const express = require("express");
 const Item = require("../models/Item");
 const Repair = require("../models/Repair");
+const validation = require("../validation");
 
 const router = express.Router();
 
@@ -15,6 +16,13 @@ router
   })
 
   .post((req, res, next) => {
+    const { errors, isValid } = validation.itemInput(req.body);
+    if (!isValid) {
+      res.status(400).json({
+        status: "error",
+        message: errors,
+      });
+    }
     Item.create(req.body)
       .then((item) => {
         res.status(201).json(item);
