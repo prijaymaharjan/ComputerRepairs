@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./scss/Main.scss";
+import "../scss/Main.scss";
 
 class Header extends Component {
   render() {
@@ -15,7 +15,7 @@ class Header extends Component {
                     <Link to="/">
                       <img
                         className="logos"
-                        src={require("./image/logo.jpg")}
+                        src={require("../image/logo.jpg")}
                         alt="computerrepair"
                       />
                     </Link>
@@ -26,7 +26,7 @@ class Header extends Component {
                       <div className="header-left-info float-left">
                         <ul>
                           <li>
-                            <span class="header-label">
+                            <span className="header-label">
                               <i className="fa fa-phone" />
                             </span>
 
@@ -37,7 +37,7 @@ class Header extends Component {
                           </li>
 
                           <li>
-                            <span class="header-label">
+                            <span className="header-label">
                               <i className="fa fa-clock-o" />
                             </span>
 
@@ -53,9 +53,9 @@ class Header extends Component {
                           type="button"
                           className="btn btn-primary appoint-button"
                         >
-                          <a className="appointment font-weight-bold" href="#">
+                          <Link className="appointment font-weight-bold" to="#">
                             Make a Appointment
-                          </a>
+                          </Link>
                         </button>
                       </div>
                     </div>

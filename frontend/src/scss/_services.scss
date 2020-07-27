@@ -1,0 +1,58 @@
+@import "global";
+
+h4 {
+    line-height: 1.4;
+}
+
+.services {
+
+    margin-bottom: 15px;
+
+    .heading {
+        .title {
+            font-size: $font-sizemid;
+            letter-spacing: -1;
+            font-weight: $font-weight;
+        }
+
+        .info {
+            font-size: $font-size;
+            font-weight: $font-weighthalf;
+        }
+    }
+
+    .service-info {
+        z-index: 2;
+        margin-top: 32px;
+        padding: 0 40px 40px;
+        position: relative;
+        background-color: $background-color;
+
+        .box-icon {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            font-size: 48px;
+            line-height: 100px;
+            margin-top: -50px;
+            text-align: center;
+            background-color: $background-color-blue;
+            color: #fff;
+            margin-bottom: 30px;
+            border-radius: 50%;
+        }
+
+        .box-content {
+            .box-title {
+                font-size: $font-size;
+                letter-spacing: -.4px;
+                margin-bottom: 20px;
+                font-weight: $font-weighthalf;
+            }
+
+            .infos {
+                @extend .box-title;
+            }
+        }
+    }
+}

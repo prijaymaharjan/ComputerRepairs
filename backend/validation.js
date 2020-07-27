@@ -28,10 +28,10 @@ const registerInput = (data) => {
 
   if (data.Lastname) {
     if (!validator.isAlpha(data.Lastname.trim())) {
-      errors.Firstname = "Last Name Not Valid";
+      errors.Lastname = "Last Name Not Valid";
     }
   } else {
-    errors.Firstname = "LastName Is Required";
+    errors.Lastname = "LastName Is Required";
   }
 
   if (data.Role) {
@@ -221,4 +221,10 @@ const repairInput = (data) => {
   };
 };
 
-module.exports = { registerInput, appointmentInput, itemInput, repairInput };
+module.exports = {
+  registerInput,
+  appointmentInput,
+  itemInput,
+  repairInput,
+  laptopInput,
+};

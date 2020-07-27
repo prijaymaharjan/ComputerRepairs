@@ -1,7 +1,11 @@
 import React from "react";
 import "./App.css";
-import Header from "./Header";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import Slider from "./components/Slider";
+import Repair from "./components/Repair";
+import Column from "./components/Column";
+import Services from "./components/Services";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -10,7 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-
+        <Navbar />
         <Switch>
           <Route path="/" exact component={Home}></Route>
         </Switch>
@@ -22,7 +26,10 @@ function App() {
 const Home = () => {
   return (
     <div>
-      <h2>Welcome to Home Page</h2>
+      <Slider />
+      <Repair />
+      <Column />
+      <Services />
     </div>
   );
 };

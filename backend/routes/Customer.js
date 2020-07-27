@@ -58,7 +58,7 @@ router
       })
       .catch(next);
   })
-  .delete((req, res, next) => {
+  .delete(auth.verifyAdmin, (req, res, next) => {
     Customer.findByIdAndDelete(req.params.customer_id)
       .then((reply) => {
         res.json(reply);

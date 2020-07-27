@@ -22,10 +22,10 @@ app.use(express.json());
 app.use("/user", User);
 app.use("/customer", auth.verifyUser, customer);
 app.use("/appointment", Appointment);
-app.use("/technican", auth.verifyUser, Technican);
-app.use("/laptop", auth.verifyUser, Laptop);
-app.use("/repair", /* auth.verifyUser,*/ Repair);
-app.use("/item", auth.verifyUser, Item);
+app.use("/technican", Technican);
+app.use("/laptop", Laptop);
+app.use("/repair", Repair);
+app.use("/item", Item);
 app.use("/upload", uploadRouter);
 app.use(express.static(path.join(__dirname, "public")));
 

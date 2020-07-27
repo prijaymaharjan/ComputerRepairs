@@ -1,6 +1,16 @@
-@import "Header";
-
 * {
-  margin: 0;
-  padding: 0;
+  padding: 0px;
+  margin: 0px;
 }
+
+body {
+  background: radial-gradient(#e5e5e5, #fff, #e5e5e5);
+}
+
+@import "Header";
+@import "Navbar";
+@import "Carousel";
+@import "services";
+@import "column";
+@import "serviceprofiles";
+@import "cardui";
