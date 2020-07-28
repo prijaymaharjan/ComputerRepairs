@@ -1,0 +1,39 @@
+//Info.js
+@import "global";
+
+.informs {
+
+    margin-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    background: #009cff url('../image/pattern3.png');
+    background-position: 0 0;
+    background-repeat: repeat;
+
+    .counter-box {
+        display: block;
+        padding: 40px 20px 37px;
+
+        p {
+            margin: 5px 0 0;
+            padding: 0;
+            font-size: 20px;
+            font-weight: $font-weight-one;
+        }
+
+        i {
+            font-size: 44px;
+            margin: 0 0 15px;
+        }
+
+        .counter {
+            display: block;
+            font-size: $font-sizethree;
+            font-weight: 700;
+            line-height: 28px
+        }
+
+
+
+    }
+}

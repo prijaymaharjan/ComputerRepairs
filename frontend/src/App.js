@@ -5,6 +5,12 @@ import Navbar from "./components/Navbar";
 import Slider from "./components/Slider";
 import Repair from "./components/Repair";
 import Column from "./components/Column";
+import OurServices from "./components/OurServices";
+import Info from "./components/Info";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact";
+
+//Main service
 import Services from "./components/Services";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -17,6 +23,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home}></Route>
+          <Route path="/services" exact component={Services}></Route>
+          <Route path="/contact" exact component={Contact}></Route>
         </Switch>
       </div>
     </BrowserRouter>
@@ -29,7 +37,9 @@ const Home = () => {
       <Slider />
       <Repair />
       <Column />
-      <Services />
+      <OurServices />
+      <Info />
+      <Footer />
     </div>
   );
 };

@@ -57,27 +57,29 @@ class Repair extends Component {
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12">
                 <div className="service-info shadow-lg">
-                  {" "}
-                  <div className="box-icon">
+                  <div className="service-info shadow-lg">
                     {" "}
-                    <span>
-                      <i className="fa fa-calendar"></i>{" "}
-                    </span>
-                  </div>
-                  <div className="box-content text-center">
-                    {" "}
-                    <h4 className="box-title">30 Days Warranty</h4>
-                    <p className="infos">
+                    <div className="box-icon">
                       {" "}
-                      This means if you have a recurring problem, jusk pick up
-                      and repair it free of charge.{" "}
-                    </p>
+                      <span>
+                        <i className="fa fa-calendar"></i>{" "}
+                      </span>
+                    </div>
+                    <div className="box-content text-center">
+                      {" "}
+                      <h4 className="box-title">30 Days Warranty</h4>
+                      <p className="infos">
+                        {" "}
+                        This means if you have a recurring problem, jusk pick up
+                        and repair it free of charge.{" "}
+                      </p>
+                    </div>{" "}
                   </div>{" "}
-                </div>{" "}
-              </div>
+                </div>
+              </div>{" "}
             </div>{" "}
           </div>{" "}
-        </div>{" "}
+        </div>
       </div>
     );
   }

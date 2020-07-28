@@ -1,0 +1,23 @@
+//services.js
+@import "global";
+
+.title-wrapper {
+  background-image: url("../image/bg-02.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: inherit;
+  background-position: center center;
+
+  .title-holder {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: table;
+    color: $colorwhite;
+
+    .page-title {
+      margin: 0;
+      color: inherit;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import "global";
+
 * {
   padding: 0px;
   margin: 0px;
@@ -7,6 +9,27 @@ body {
   background: radial-gradient(#e5e5e5, #fff, #e5e5e5);
 }
 
+.box-title {
+  position: relative;
+  font-size: $font-sizemid;
+  letter-spacing: $letter-spacing;
+  font-weight: $font-weight;
+}
+
+.box-title::after {
+  position: relative;
+  content: "";
+  display: block;
+  width: 30px;
+  margin: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: -1px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #009cff;
+}
+
 @import "Header";
 @import "Navbar";
 @import "Carousel";
@@ -14,3 +37,11 @@ body {
 @import "column";
 @import "serviceprofiles";
 @import "cardui";
+@import "info";
+@import "footer";
+
+//Services
+@import "mainservice";
+
+// contactform.js
+@import "contactform";

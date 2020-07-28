@@ -1,5 +1,6 @@
 @import "global";
 
+//CardUI.js
 .card {
     width: 20rem;
 
@@ -22,6 +23,14 @@
             font-weight: 400;
             letter-spacing: -.4px;
         }
+
+        .btn {
+            line-height: 1;
+            text-transform: $text-tranform;
+            font-weight: $font-weight-one;
+            font-size: $font-sizetwo;
+            padding: 15px 20px;
+        }
     }
 
     .card-text {
@@ -41,14 +50,4 @@
             }
         }
     }
-}
-
-
-
-
-
-
-
-.container .row {
-    padding-top: 6rem;
 }
