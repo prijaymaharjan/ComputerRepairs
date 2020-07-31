@@ -53,7 +53,10 @@ class Header extends Component {
                           type="button"
                           className="btn btn-primary appoint-button"
                         >
-                          <Link className="appointment font-weight-bold" to="#">
+                          <Link
+                            className="appointment font-weight-bold"
+                            to="Appointment"
+                          >
                             Make a Appointment
                           </Link>
                         </button>

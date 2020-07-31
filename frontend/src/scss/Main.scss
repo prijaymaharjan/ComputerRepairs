@@ -9,6 +9,13 @@ body {
   background: radial-gradient(#e5e5e5, #fff, #e5e5e5);
 }
 
+a {
+  color: #92badd;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: $font-weighthalf;
+}
+
 .box-title {
   position: relative;
   font-size: $font-sizemid;
@@ -45,3 +52,15 @@ body {
 
 // contactform.js
 @import "contactform";
+
+//Login.js
+@import "login";
+
+//Appointment.js
+@import "appointment";
+
+// Shop.js
+@import "shop";
+
+//Shopcart.js
+@import "shopcart"

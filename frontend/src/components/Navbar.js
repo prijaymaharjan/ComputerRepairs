@@ -7,9 +7,6 @@ class Navbar extends Component {
     return (
       <div className="navbars">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <Link className="navbar-brand" to="#">
-            Navbar
-          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -36,7 +33,7 @@ class Navbar extends Component {
               </li>
 
               <li className="nav-item ">
-                <Link className="nav-link text-white" to="/">
+                <Link className="nav-link text-white" to="Shop">
                   shop
                 </Link>
               </li>
@@ -50,12 +47,12 @@ class Navbar extends Component {
 
             <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
               <li className="nav-item mr-4 ">
-                <Link className="text-white" to="#">
+                <Link className="text-white" to="Register">
                   <span className="register ">Register</span>
                 </Link>
               </li>
               <li className="nav-item mr-4">
-                <Link className="text-white" to="#">
+                <Link className="text-white" to="Login">
                   <span className="login ">Login</span>
                 </Link>
               </li>
