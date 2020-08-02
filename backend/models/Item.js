@@ -20,6 +20,10 @@ const Itemschema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    Total: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -13,6 +13,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Appointment from "./components/Appointment";
 import Shop from "./components/Shop";
+import Navcart from "./components/Navcart";
+import Profile from "./components/Profile";
 
 //Main service
 import Services from "./components/Services";
@@ -33,6 +35,8 @@ function App() {
           <Route path="/register" exact component={Register}></Route>
           <Route path="/appointment" exact component={Appointment}></Route>
           <Route path="/shop" exact component={Shop}></Route>
+          <Route path="/navcart" exact component={Navcart}></Route>
+          <Route path="/profile" exact component={Profile}></Route>
         </Switch>
       </div>
     </BrowserRouter>

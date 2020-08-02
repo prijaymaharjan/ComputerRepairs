@@ -1,0 +1,11 @@
+@import "global";
+
+.appointmentdate {
+    background-color: $background-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadowone;
+
+    .form {
+        padding-top: 37px;
+    }
+}

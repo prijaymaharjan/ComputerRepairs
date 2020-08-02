@@ -1,0 +1,38 @@
+@import "global";
+@import "login";
+
+.profile-button {
+    width: 93%;
+
+    .profilebutton {
+        margin: 23px 289px 0 0;
+        padding: 12px;
+
+    }
+}
+
+.myprofile {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: $background-color;
+    border-radius: 36px;
+    padding: 35px;
+
+    .about-item {
+        border-bottom: 2px solid #0062cc;
+        width: 86px;
+        margin-left: 146px;
+        font-size: 25px;
+    }
+
+
+    span {
+        font-weight: $font-weight;
+    }
+
+    p {
+        font-weight: $font-weight;
+        color: $background-color-blue;
+        margin-left: 96px;
+        text-align: left;
+    }
+}

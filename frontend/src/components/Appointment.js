@@ -56,7 +56,7 @@ class Appointment extends Component {
               action="#"
               method="get"
             >
-              <div class="form-row">
+              <div className="form-row">
                 <div className="form-group col-md-6">
                   <input
                     type="text"
@@ -69,7 +69,7 @@ class Appointment extends Component {
                     onChange={this.handleall}
                   />
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                   <input
                     type="text"
                     className="form-control fadeIn third"
@@ -82,7 +82,7 @@ class Appointment extends Component {
                   />
                 </div>
               </div>
-              <div class="form-row">
+              <div className="form-row">
                 <div className="form-group col-md-6">
                   <input
                     type="text"
@@ -95,7 +95,7 @@ class Appointment extends Component {
                     required=""
                   />
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                   <input
                     type="text"
                     className="form-control fadeIn five"
@@ -111,7 +111,7 @@ class Appointment extends Component {
               <div className="form-group ">
                 <input
                   type="text"
-                  class="form-control fadeIn six"
+                  className="form-control fadeIn six"
                   id="subject"
                   placeholder="Subject"
                   name="subject"
@@ -136,7 +136,7 @@ class Appointment extends Component {
               <input
                 type="submit"
                 className="text-center fadeIn fourth"
-                value="Log In"
+                value="Submit"
               />
             </form>
           </div>

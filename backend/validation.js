@@ -155,6 +155,14 @@ const itemInput = (data) => {
   } else {
     errors.Quantity = "Quantity is required";
   }
+
+  if (data.Total) {
+    if (!validator.isInt(data.Total)) {
+      errors.Quantity = "Total InValid";
+    }
+  } else {
+    errors.Quantity = "Total is required";
+  }
   return {
     errors,
     isValid: Object.keys(errors).length == 0,

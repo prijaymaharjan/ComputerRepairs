@@ -9,6 +9,26 @@ body {
   background: radial-gradient(#e5e5e5, #fff, #e5e5e5);
 }
 
+.card-icon .fa-shopping-cart {
+  font-size: 21px;
+}
+
+.card-num {
+  display: none;
+  position: absolute;
+  background: #f36e36;
+  color: #fff;
+  top: 4px;
+  font-weight: 400;
+  right: 210px;
+  text-align: center;
+  border: 3px solid #f36e36;
+  font-size: 13px;
+  min-width: 19px;
+  line-height: 14px;
+  border-radius: 50%;
+}
+
 a {
   color: #92badd;
   display: inline-block;
@@ -63,4 +83,23 @@ a {
 @import "shop";
 
 //Shopcart.js
-@import "shopcart"
+@import "shopcart";
+
+// Navcart.js
+@import "navcard";
+
+//profiles.js
+@import "profile";
+
+//Leftside.js
+@import "Leftinfo";
+
+//Myaccount.js
+@import "myaccount";
+
+
+//Appointmentdate.js
+@import "appointmentdate";
+
+//Laptopform.js
+@import "laptopform";

@@ -47,6 +47,18 @@ class Navbar extends Component {
 
             <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
               <li className="nav-item mr-4 ">
+                <Link className="text-white" to="Navcart">
+                  <span className="card-icon">
+                    <span>
+                      <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                  <span className="card-num" id="topActionCartNumber">
+                    0
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item mr-4 ">
                 <Link className="text-white" to="Register">
                   <span className="register ">Register</span>
                 </Link>
