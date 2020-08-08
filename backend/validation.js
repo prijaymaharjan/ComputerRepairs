@@ -83,14 +83,6 @@ const registerInput = (data) => {
     errors.Address = "Address is required";
   }
 
-  if (data.Professional) {
-    if (!validator.isAlpha(data.Professional.trim())) {
-      errors.Professional = "Professional Not Valid";
-    }
-  } else {
-    errors.Professional = "Professional Is Required";
-  }
-
   return {
     errors,
     isValid: Object.keys(errors).length == 0,

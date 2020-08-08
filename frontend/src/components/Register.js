@@ -17,7 +17,6 @@ class Register extends Component {
       email: "",
       mobile: "",
       address: "",
-      professional: "",
     };
   }
   handleall = (e) => {
@@ -136,16 +135,6 @@ class Register extends Component {
                     value={this.state.address}
                     onChange={this.handleall}
                   />
-                  <input
-                    type="text"
-                    id="professional"
-                    className="fadeIn third"
-                    name="professional"
-                    placeholder="Professional"
-                    value={this.state.professional}
-                    onChange={this.handleall}
-                  />
-
                   <input
                     type="submit"
                     className="text-center fadeIn fourth"

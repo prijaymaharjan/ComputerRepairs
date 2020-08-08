@@ -2,23 +2,20 @@ import React, { Component } from "react";
 import Leftinfo from "./Leftinfo";
 import "../scss/Main.scss";
 import Myaccount from "./Myaccount";
-import Appointment from "./Appointmentdate";
-import Laptopform from "./Laptopform";
-class Profileinfo extends Component {
+import AppointmentInfo from "./AppointmentInfo";
+class Technicanprofile extends Component {
   render() {
     return (
       <div className="Profileinfo">
         <Leftinfo
           firstlink="My Account"
           secondlink="My Profile"
-          thirdlink="Appointment"
-          fourthlink="Laptop"
+          thirdlink="Appointment Info"
           first={<Myaccount />}
-          second={<Appointment />}
-          third={<Laptopform />}
+          second={<AppointmentInfo />}
         />
       </div>
     );
   }
 }
-export default Profileinfo;
+export default Technicanprofile;

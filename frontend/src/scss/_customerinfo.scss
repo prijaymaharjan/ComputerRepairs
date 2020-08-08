@@ -1,0 +1,11 @@
+@import "global";
+
+.customerform {
+    label {
+        float: left;
+        color: $colorblack;
+        padding: 25px;
+        font-size: $font-size;
+        font-weight: $font-weight;
+    }
+}

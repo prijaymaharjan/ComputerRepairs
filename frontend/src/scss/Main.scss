@@ -13,6 +13,18 @@ body {
   font-size: 21px;
 }
 
+.fa-edit {
+  font-size: $iconfontsize;
+}
+
+.icon-space {
+  margin-left: 5px;
+}
+
+.customerinfor {
+  display: flex;
+}
+
 .card-num {
   display: none;
   position: absolute;
@@ -56,6 +68,7 @@ a {
   border-top-width: 1px;
   border-top-color: #009cff;
 }
+
 
 @import "Header";
 @import "Navbar";
@@ -103,3 +116,13 @@ a {
 
 //Laptopform.js
 @import "laptopform";
+
+//customerinfo.js
+@import "customerinfo";
+
+//Technicaninfo.scss
+@import "technicaninfo";
+
+
+//Registeradmin.js
+@import "registeradmin";

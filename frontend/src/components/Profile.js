@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 
 import Footer from "./Footer";
-import Profileinfo from "./Profileinfo";
+import Customprofile from "./Customprofile";
+import Technicanprofile from "./Technicanprofile";
+import Admin from "./Admin";
 import "../scss/Main.scss";
 
 class Profile extends Component {
   render() {
     return (
       <div className="profile">
-        <Profileinfo />
+        <Customprofile />
+        <Technicanprofile />
+        <Admin />
         <Footer />
       </div>
     );

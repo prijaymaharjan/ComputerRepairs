@@ -14,10 +14,11 @@ router
       .catch(next);
   })
   .post((req, res, next) => {
-    let { Name, Address, Gender, Mobile, Email } = req.body;
+    let { Firstname, Lastname, Address, Gender, Mobile, Email } = req.body;
 
     Customer.create({
-      Name,
+      Firstname,
+      Lastname,
       Address,
       Gender,
       Mobile,
