@@ -3,14 +3,16 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const validation = require("../validation");
+const cors = require("cors");
+router.use(cors("*"));
 
+const validation = require("../validation");
 router.post("/register", (req, res, next) => {
-  const { errors, isValid } = validation.registerInput(req.body);
+  const { error, isValid } = validation.registerInput(req.body);
   if (!isValid) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "error",
-      message: errors,
+      message: error,
     });
   }
   let {
@@ -105,4 +107,20 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
+router.get("/Profile", (req, res) => {
+  const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
+  User.findOne({
+    _id: decoded._id,
+  })
+    .then((user) => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.send("User does not Exist");
+      }
+    })
+    .catch((err) => {
+      res.send("error:" + err);
+    });
+});
 module.exports = router;

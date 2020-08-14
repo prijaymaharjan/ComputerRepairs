@@ -2,30 +2,41 @@ const mongoose = require("mongoose");
 
 const Appointmentschema = new mongoose.Schema(
   {
-    Customers: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Customer",
-    }],
-    Technicans: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Technican",
-    }],
-    Date: {
-      type: Date,
-      default: Date.now,
+    Customers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Customer",
+      },
+    ],
+    Technicans: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Technican",
+      },
+    ],
+    Firstname: {
+      type: String,
       required: true,
     },
-    Address: {
+    Lastname: {
       type: String,
       required: true,
     },
 
-    City: {
+    Email: {
       type: String,
       required: true,
     },
 
-    Time: {
+    Mobile: {
+      type: String,
+      required: true,
+    },
+    Subject: {
+      type: String,
+      required: true,
+    },
+    Message: {
       type: String,
       required: true,
     },

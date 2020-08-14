@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const path = require("path");
 const customer = require("./routes/Customer");
 const Appointment = require("./routes/Appointment");
 const Technican = require("./routes/Technican");
@@ -10,15 +12,15 @@ const User = require("./routes/User");
 const bodyParser = require("body-parser");
 const auth = require("./routes/Auth");
 const uploadRouter = require("./routes/upload");
-const path = require("path");
 
 require("dotenv/config");
 
 const app = express();
-
+app.use(cors("*"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+
 app.use("/user", User);
 app.use("/customer", auth.verifyUser, customer);
 app.use("/appointment", Appointment);

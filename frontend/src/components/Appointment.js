@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import axios from "axios";
 import Footer from "./Footer";
 class Appointment extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Appointment extends Component {
       mobile: "",
       subject: "",
       message: "",
+      error: {},
     };
   }
   handleall = (e) => {
@@ -20,8 +22,26 @@ class Appointment extends Component {
     });
   };
   handlesubmit = (e) => {
-    alert(JSON.stringify(this.state));
+    // alert(JSON.stringify(this.state));
+    console.log(this.state);
+
     e.preventDefault();
+    const userObject = {
+      Firstname: this.state.firstname,
+      Lastname: this.state.lastname,
+      Email: this.state.email,
+      Mobile: this.state.mobile,
+      Subject: this.state.subject,
+      Message: this.state.message,
+    };
+    axios
+      .post("http://localhost:3000/appointment", userObject)
+      .then((response) => {
+        console.log("Request Succeded ", response);
+      })
+      .catch((error) => {
+        console.log("Failed ", error);
+      });
   };
   render() {
     return (
@@ -54,7 +74,7 @@ class Appointment extends Component {
               className="form mb-5"
               onSubmit={this.handlesubmit}
               action="#"
-              method="get"
+              method="post"
             >
               <div className="form-row">
                 <div className="form-group col-md-6">

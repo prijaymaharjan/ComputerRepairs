@@ -11,8 +11,8 @@ function verifyUser(req, res, next) {
   let token = authHeader.split(" ")[1];
   jwt.verify(token, process.env.SECRET, (err, payload) => {
     if (err) {
-      let err = new Error("Token could not be Verified");
-      return next(err);
+      let error = new Error("Token could not be Verified");
+      return next(error);
     }
     req.user = payload;
     next();

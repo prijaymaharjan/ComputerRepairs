@@ -24,6 +24,7 @@ const UserSchema = mongoose.Schema(
       type: String,
       default: "basic",
       emum: ["basic", "manager", "admin"],
+      required: false,
     },
     Gender: {
       type: String,

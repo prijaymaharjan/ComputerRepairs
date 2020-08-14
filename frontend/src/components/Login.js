@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Footer from "./Footer";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 class Login extends Component {
   constructor(props) {
@@ -18,10 +20,37 @@ class Login extends Component {
     });
   };
   handlesubmit = (e) => {
-    alert(JSON.stringify(this.state));
+    console.log(this.state);
     e.preventDefault();
+    const user = {
+      Username: this.state.username,
+      Password: this.state.password,
+    };
+    axios
+      .post("http://localhost:3000/user/login", user)
+      .then((response) => {
+        console.log(this.state);
+        localStorage.setItem("token", response.data.token);
+        let users = jwtDecode(response.data.token.split(" ")[1]);
+        if (users.role === "Admin") this.setState({ isAdmin: true });
+        else this.setState({ isBasic: true });
+        if (users.role === "Technican") this.setState({ isTechnican: true });
+        else this.setState({ isBasic: true });
+
+        return response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   render() {
+    if (this.state.isAdmin) {
+      return <Redirect to="/Admin" />;
+    } else if (this.state.isTechnican) {
+      return <Redirect to="/Technicanprofile" />;
+    } else if (this.state.isBasic) {
+      return <Redirect to="/Customprofile" />;
+    }
     return (
       <div
         className="Form"

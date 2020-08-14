@@ -83,6 +83,14 @@ const registerInput = (data) => {
     errors.Address = "Address is required";
   }
 
+  if (data.Professional) {
+    if (!validator.isLength(data.Professional.trim(), { min: 3, max: 30 })) {
+      errors.Professional = "Professional must be between 3 and 30 charaters";
+    }
+  } else {
+    errors.Professional = "Profession is required";
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length == 0,
@@ -91,31 +99,43 @@ const registerInput = (data) => {
 
 const appointmentInput = (data) => {
   let errors = {};
-  if (data.Date) {
-    if (!validator.isDate(data.Date)) {
-      errors.Date = "Date of Not Valid";
+
+  if (data.Firstname) {
+    if (!validator.isLength(data.Firstname.trim(), { min: 3, max: 30 })) {
+      errors.Firstname = "Firstname must be between 3 and 30 charaters";
     }
   } else {
-    errors.DateofBirth = "Date Is Required";
-  }
-  if (data.Address) {
-    if (!validator.isLength(data.Address.trim(), { min: 3, max: 30 })) {
-      errors.Address = "Address must be between 3 and 30 charaters";
-    }
-  } else {
-    errors.Address = "Address is required";
+    errors.Firstname = "Firstname is required";
   }
 
-  if (data.City) {
-    if (!validator.isLength(data.City.trim(), { min: 3, max: 30 })) {
-      errors.City = "City must be between 3 and 30 charaters";
+  if (data.Lastname) {
+    if (!validator.isLength(data.Lastname.trim(), { min: 3, max: 30 })) {
+      errors.Lastname = "Lastname must be between 3 and 30 charaters";
     }
   } else {
-    errors.City = "City is required";
+    errors.Lastname = "Lastname is required";
   }
 
-  if (!data.Time) {
-    errors.Time = "Time is required";
+  if (data.Email) {
+    if (!validator.isEmail(data.Email.trim())) {
+      errors.Email = "Email Not Valid";
+    }
+  } else {
+    errors.Email = "Email Is Required";
+  }
+  if (data.Subject) {
+    if (!validator.isLength(data.Subject.trim(), { min: 3, max: 30 })) {
+      errors.Subject = "Subject must be between 3 and 30 charaters";
+    }
+  } else {
+    errors.Subject = "Subject is required";
+  }
+  if (data.Message) {
+    if (!validator.isLength(data.Message.trim(), { min: 3, max: 30 })) {
+      errors.Message = "Message must be between 3 and 30 charaters";
+    }
+  } else {
+    errors.Message = "Message is required";
   }
 
   return {

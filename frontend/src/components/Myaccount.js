@@ -6,19 +6,14 @@ class Myaccount extends Component {
   state = { isLoggedIn: false };
 
   handleLoginClick = () => {
-    this.setState({ isLoggedIn: true });
-  };
-
-  handleLogoutClick = () => {
-    this.setState({ isLoggedIn: false });
+    this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
-    if (isLoggedIn) {
+    if (this.state.isLoggedIn) {
       return <UserGreeting clickData={this.handleLoginClick} />;
     } else {
-      return <GuestGreeting clickData={this.handleLogoutClick} />;
+      return <GuestGreeting clickData={this.handleLoginClick} />;
     }
   }
 }

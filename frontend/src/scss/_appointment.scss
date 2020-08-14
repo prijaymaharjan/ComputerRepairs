@@ -26,7 +26,8 @@
         }
     }
 
-    input[type=submit] {
+    input[type=submit],
+    button {
         background-color: #56baed;
         border: none;
         color: $colorwhite;

@@ -15,7 +15,7 @@ import Appointment from "./components/Appointment";
 import Shop from "./components/Shop";
 import Navcart from "./components/Navcart";
 import Profile from "./components/Profile";
-
+//import Customprofile from "./components/Customprofile";
 //Main service
 import Services from "./components/Services";
 
