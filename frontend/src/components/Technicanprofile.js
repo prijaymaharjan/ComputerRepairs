@@ -3,6 +3,7 @@ import Leftinfo from "./Leftinfo";
 import "../scss/Main.scss";
 import Myaccount from "./Myaccount";
 import AppointmentInfo from "./AppointmentInfo";
+import Footer from "./Footer";
 class Technicanprofile extends Component {
   render() {
     return (
@@ -14,6 +15,7 @@ class Technicanprofile extends Component {
           first={<Myaccount />}
           second={<AppointmentInfo />}
         />
+        <Footer />
       </div>
     );
   }

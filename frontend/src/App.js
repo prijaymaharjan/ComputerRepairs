@@ -14,8 +14,10 @@ import Register from "./components/Register";
 import Appointment from "./components/Appointment";
 import Shop from "./components/Shop";
 import Navcart from "./components/Navcart";
-import Profile from "./components/Profile";
-//import Customprofile from "./components/Customprofile";
+//import Profile from "./components/Profile";
+import Admin from "./components/Admin";
+import Customprofile from "./components/Customprofile";
+import Technicanprofile from "./components/Technicanprofile";
 //Main service
 import Services from "./components/Services";
 
@@ -36,7 +38,13 @@ function App() {
           <Route path="/appointment" exact component={Appointment}></Route>
           <Route path="/shop" exact component={Shop}></Route>
           <Route path="/navcart" exact component={Navcart}></Route>
-          <Route path="/profile" exact component={Profile}></Route>
+          <Route path="/admin" exact component={Admin}></Route>
+          <Route path="/customprofile" exact component={Customprofile}></Route>
+          <Route
+            path="/technicanprofile"
+            exact
+            component={Technicanprofile}
+          ></Route>
         </Switch>
       </div>
     </BrowserRouter>

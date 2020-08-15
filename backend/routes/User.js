@@ -107,7 +107,7 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/Profile", (req, res) => {
+router.get("/GuestGreeting", (req, res) => {
   const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
   User.findOne({
     _id: decoded._id,

@@ -1,5 +1,35 @@
 import React, { Component } from "react";
+import jwt_decode from "jwt-decode";
 class GuestGreeting extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Username: "",
+      Firstname: "",
+      Lastname: "",
+      Email: "",
+      DateofBirth: "",
+      Mobile: "",
+      Address: "",
+      Gender: "",
+      Professional: "",
+    };
+  }
+  componentDidMount() {
+    const token = localStorage.token;
+    const decoded = jwt_decode(token);
+    this.setState({
+      Username: decoded.Username,
+      Firstname: decoded.Firstname,
+      Lastname: decoded.Lastname,
+      Email: decoded.Email,
+      DateofBirth: decoded.DateofBirth,
+      Mobile: decoded.Mobile,
+      Address: decoded.Address,
+      Gender: decoded.Gender,
+      Professional: decoded.Professional,
+    });
+  }
   render() {
     return (
       <div className="myprofile">
@@ -13,16 +43,25 @@ class GuestGreeting extends Component {
             <span>User Id</span>
           </div>
           <div className="col-md-6">
-            <p>prijaymaharjan</p>
+            <p>{this.state.Username}</p>
           </div>
         </div>
 
         <div className="row">
           <div className="col-md-6">
-            <span>Name</span>
+            <span>First Name</span>
           </div>
           <div className="col-md-6">
-            <p>Prijay Maharjan</p>
+            <p>{this.state.Firstname}</p>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-6">
+            <span>Last Name</span>
+          </div>
+          <div className="col-md-6">
+            <p>{this.state.Lastname}</p>
           </div>
         </div>
 
@@ -31,7 +70,7 @@ class GuestGreeting extends Component {
             <span>Email</span>
           </div>
           <div className="col-md-6">
-            <p>prijaymaharjan@gmail.com</p>
+            <p>{this.state.Email}</p>
           </div>
         </div>
 
@@ -40,7 +79,7 @@ class GuestGreeting extends Component {
             <span>Date of Birth</span>
           </div>
           <div className="col-md-6">
-            <p>2996-11-26</p>
+            <p>{this.state.DateofBirth}</p>
           </div>
         </div>
 
@@ -49,7 +88,7 @@ class GuestGreeting extends Component {
             <span>Mobile</span>
           </div>
           <div className="col-md-6">
-            <p>9845924073</p>
+            <p>{this.state.Mobile}</p>
           </div>
         </div>
 
@@ -58,7 +97,7 @@ class GuestGreeting extends Component {
             <span>Address</span>
           </div>
           <div className="col-md-6">
-            <p>Chitwan</p>
+            <p>{this.state.Address}</p>
           </div>
         </div>
 
@@ -67,7 +106,7 @@ class GuestGreeting extends Component {
             <span>Gender</span>
           </div>
           <div className="col-md-6">
-            <p>Male</p>
+            <p>{this.state.Gender}</p>
           </div>
         </div>
 
@@ -76,7 +115,7 @@ class GuestGreeting extends Component {
             <span>Professional</span>
           </div>
           <div className="col-md-6">
-            <p>Student</p>
+            <p>{this.state.Professional}</p>
           </div>
         </div>
 

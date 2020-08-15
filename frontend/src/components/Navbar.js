@@ -6,7 +6,6 @@ class Navbar extends Component {
   logOut(e) {
     e.preventDefault();
     localStorage.removeItem("token");
-
     this.props.history.push("/");
   }
   render() {
