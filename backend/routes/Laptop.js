@@ -16,11 +16,11 @@ router
   })
 
   .post((req, res, next) => {
-    const { errors, isValid } = validation.repairInput(req.body);
+    const { error, isValid } = validation.laptopInput(req.body);
     if (!isValid) {
-      res.status(400).json({
+      return res.status(400).json({
         status: "error",
-        message: errors,
+        message: error,
       });
     }
     Laptop.create(req.body)

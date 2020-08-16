@@ -26,7 +26,7 @@ class Navbar extends Component {
     const UserLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
-          <Link className="text-white" to="/Profile">
+          <Link className="text-white" to="/">
             <span className="register ">User</span>
           </Link>
         </li>

@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import axios from "axios";
 class Laptopform extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      laptop: [],
       model: "",
       description: "",
+      config: {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      },
     };
   }
   handleall = (e) => {
@@ -15,8 +22,19 @@ class Laptopform extends Component {
     });
   };
   handlesubmit = (e) => {
-    alert(JSON.stringify(this.state));
+    console.log(this.state);
     e.preventDefault();
+
+    const laptops = {
+      Model: this.state.model,
+      Description: this.state.description,
+    };
+    axios
+      .post("http://localhost:3000/laptop", laptops, this.state.config)
+      .then((response) => {
+        console.log("Request Succeded", response);
+      })
+      .catch((err) => console.log(err.response));
   };
   render() {
     return (
@@ -26,16 +44,15 @@ class Laptopform extends Component {
             className="form mb-5"
             onSubmit={this.handlesubmit}
             action="#"
-            method="get"
+            method="post"
           >
-            <div className="form-row">
+            <div className="form-row model">
               <div className="form-group col-md-9">
                 <input
                   type="text"
                   className="form-control fadeIn second"
                   id="model"
                   placeholder="Model"
-                  required=""
                   name="model"
                   value={this.state.model}
                   onChange={this.handleall}
@@ -51,7 +68,6 @@ class Laptopform extends Component {
                 placeholder="Description"
                 value={this.state.description}
                 onChange={this.handleall}
-                required=""
               />
             </div>
 
@@ -59,6 +75,7 @@ class Laptopform extends Component {
               type="submit"
               className="text-center fadeIn fourth"
               value="Submit"
+              onClick={this.handlesubmit}
             />
           </form>
         </div>
