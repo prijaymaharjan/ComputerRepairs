@@ -12,6 +12,9 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
+      isBasic: false,
+      isAdmin: false,
+      isTechnican: false,
     };
   }
   handleall = (e) => {
@@ -20,7 +23,6 @@ class Login extends Component {
     });
   };
   handlesubmit = (e) => {
-    console.log(this.state);
     e.preventDefault();
     const user = {
       Username: this.state.username,
@@ -32,22 +34,21 @@ class Login extends Component {
         console.log(this.state);
         localStorage.setItem("token", response.data.token);
         let users = jwtDecode(response.data.token.split(" ")[1]);
-        if (users.role === "Admin") this.setState({ isAdmin: true });
+        if (users.Role === "Admin") this.setState({ isAdmin: true });
+        else if (users.Role === "Technican")
+          this.setState({ isTechnican: true });
         else this.setState({ isBasic: true });
-        if (users.role === "Technican") this.setState({ isTechnican: true });
-        else this.setState({ isBasic: true });
-
-        return response.data;
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   render() {
     if (this.state.isAdmin) {
       return <Redirect to="/Admin" />;
     } else if (this.state.isTechnican) {
-      return <Redirect to="/Technicanprofile" />;
+      return <Redirect to="/technicanprofile" />;
     } else if (this.state.isBasic) {
       return <Redirect to="/Customprofile" />;
     }
@@ -57,7 +58,7 @@ class Login extends Component {
         onSubmit={this.handlesubmit}
         id="contact-form"
         action="#"
-        method="get"
+        method="post"
       >
         <div className="container">
           <div className="row">
@@ -83,6 +84,7 @@ class Login extends Component {
                     onChange={this.handleall}
                   />
                   <input
+                    onClick="handlesubmit"
                     type="submit"
                     className="text-center fadeIn fourth"
                     value="Log In"

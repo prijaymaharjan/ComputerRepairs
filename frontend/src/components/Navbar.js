@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../scss/Main.scss";
 
 class Navbar extends Component {
   logOut(e) {
     e.preventDefault();
     localStorage.removeItem("token");
-    this.props.history.push("/");
+    this.props.history.push(`/`);
   }
   render() {
     const loginRegLink = (
@@ -23,7 +23,7 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-    const UserLink = (
+    const userLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
           <Link className="text-white" to="/">
@@ -92,10 +92,10 @@ class Navbar extends Component {
               </Link>
             </li>
           </ul>
-          {localStorage.token ? UserLink : loginRegLink}
+          {localStorage.token ? userLink : loginRegLink}
         </nav>
       </div>
     );
   }
 }
-export default Navbar;
+export default withRouter(Navbar);

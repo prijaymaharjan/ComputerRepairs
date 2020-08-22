@@ -3,23 +3,34 @@ const jwt = require("jsonwebtoken");
 function verifyUser(req, res, next) {
   let authHeader = req.headers.authorization;
   if (!authHeader) {
-    let err = new Error("No authorization infomation");
+    let err = new Error("No authentication information");
     err.status = 401;
     return next(err);
   }
-
   let token = authHeader.split(" ")[1];
-  jwt.verify(token, process.env.SECRET, (err, payload) => {
-    if (err) {
-      let error = new Error("Token could not be Verified");
-      return next(error);
-    }
-    req.user = payload;
-    next();
-  });
+  let data;
+  try {
+    data = jwt.verify(token, process.env.SECRET);
+    req.user = data;
+  } catch (err) {
+    return next(err);
+  }
+  next();
 }
+const verifyAdmin = (req, res, next) => {
+  if (!req.user) {
+    let err = new Error("Unauthorized!");
+    err.status = 401;
+    return next(err);
+  } else if (req.user.Role !== "Admin") {
+    let err = new Error("Forbidden!");
+    err.status = 403;
+    return next(err);
+  }
+  next();
+};
 
-function verifyManager(req, res, next) {
+function verifyTechnican(req, res, next) {
   if (!req.user) {
     let err = new Error("No Authentication information");
     err.status = 401;
@@ -32,21 +43,8 @@ function verifyManager(req, res, next) {
   next();
 }
 
-function verifyAdmin(req, res, next) {
-  if (!req.user) {
-    let err = new Error("No Authentication information");
-    err.status = 401;
-    return next(err);
-  } else if (req.user.Role != "Admin") {
-    let err = new Error("Forbidden!");
-    err.status = 403;
-    return next(err);
-  }
-  next();
-}
-
 module.exports = {
   verifyUser,
-  verifyManager,
+  verifyTechnican,
   verifyAdmin,
 };

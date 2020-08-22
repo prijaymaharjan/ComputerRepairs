@@ -1,6 +1,34 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import Axios from "axios";
+import jwtDecode from "jwt-decode";
 class Technicaninfo extends Component {
+  constructor() {
+    super();
+    this.state = {
+      User: [],
+      Name: "",
+
+      Email: "",
+      Mobile: "",
+      Address: "",
+      Gender: "",
+      config: { headers: { Authorization: localStorage.getItem("token") } },
+    };
+  }
+  async componentDidMount() {
+    // Axios.get(`http://localhost:3000/user/login`, this.state.config)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     localStorage.setItem("token", res.data.token);
+    //     let users = jwtDecode(res.data.token.split(" ")[1]);
+    //     if (users.Role === "Basic") {
+    //       this.setState({ User: res.data });
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
+  }
+
   render() {
     return (
       <div className="Technicaninfo appointmentdate">
@@ -22,7 +50,11 @@ class Technicaninfo extends Component {
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>PrijayMaharjan</td>
+                  <td>
+                    {this.state.User.map((user) => {
+                      return <td key={user._id}>{user.Name}</td>;
+                    })}
+                  </td>
                   <td>Prijay Maharjan</td>
                   <td>Chitwan</td>
                   <td>Bharatpur-2</td>

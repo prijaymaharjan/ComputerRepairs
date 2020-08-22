@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const cors = require("cors");
 router.use(cors("*"));
+const auth = require("./Auth");
 
 const validation = require("../validation");
 router.post("/register", (req, res, next) => {
@@ -107,7 +108,7 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/GuestGreeting", (req, res) => {
+router.get("/technicanprofile", (req, res) => {
   const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
   User.findOne({
     _id: decoded._id,
@@ -123,4 +124,44 @@ router.get("/GuestGreeting", (req, res) => {
       res.send("error:" + err);
     });
 });
+router.get("/admin", (req, res) => {
+  const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
+  User.findOne({
+    _id: decoded._id,
+  })
+    .then((user) => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.send("User does not Exist");
+      }
+    })
+    .catch((err) => {
+      res.send("error:" + err);
+    });
+});
+
+router.get("/customerprofile", (req, res) => {
+  const decoded = jwt.verify(req.headers.authorization, process.env.SECRET);
+  User.findOne({
+    _id: decoded._id,
+  })
+    .then((user) => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.send("User does not Exist");
+      }
+    })
+    .catch((err) => {
+      res.send("error:" + err);
+    });
+});
+
+router.get("/all", auth.verifyUser, auth.verifyAdmin, (req, res) => {
+  User.find().then((users) => {
+    res.json(users);
+  });
+});
+
 module.exports = router;
