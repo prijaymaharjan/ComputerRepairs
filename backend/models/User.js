@@ -22,8 +22,8 @@ const UserSchema = mongoose.Schema(
     },
     Role: {
       type: String,
-      default: "basic",
-      emum: ["basic", "manager", "admin"],
+      default: "Basic",
+      emum: ["Basic", "Technican", "Admin"],
       required: false,
     },
     Gender: {

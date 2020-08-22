@@ -1,32 +1,32 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
 import Axios from "axios";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 class Technicaninfo extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       User: [],
-      Name: "",
-
+      Username: "",
+      Firstname: "",
+      Lastname: "",
+      Role: "",
+      Gender: "",
+      DateofBirth: "",
       Email: "",
       Mobile: "",
       Address: "",
-      Gender: "",
+      Professional: "",
       config: { headers: { Authorization: localStorage.getItem("token") } },
     };
   }
   async componentDidMount() {
-    // Axios.get(`http://localhost:3000/user/login`, this.state.config)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     localStorage.setItem("token", res.data.token);
-    //     let users = jwtDecode(res.data.token.split(" ")[1]);
-    //     if (users.Role === "Basic") {
-    //       this.setState({ User: res.data });
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
+    Axios.get(`http://localhost:3000/user/all`, this.state.config)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ User: res.data });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -51,8 +51,10 @@ class Technicaninfo extends Component {
                 <tr>
                   <th scope="row">1</th>
                   <td>
-                    {this.state.User.map((user) => {
-                      return <td key={user._id}>{user.Name}</td>;
+                    {this.state.User.array.forEach((user) => {
+                      if (user.Role === "Technican") {
+                        return <td key={user._id}>{user.Username}</td>;
+                      }
                     })}
                   </td>
                   <td>Prijay Maharjan</td>

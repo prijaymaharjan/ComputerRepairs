@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 function verifyUser(req, res, next) {
   let authHeader = req.headers.authorization;
@@ -11,11 +12,15 @@ function verifyUser(req, res, next) {
   let data;
   try {
     data = jwt.verify(token, process.env.SECRET);
-    req.user = data;
   } catch (err) {
     return next(err);
   }
-  next();
+  User.find(data)
+    .then((user) => {
+      req.user = data;
+      next();
+    })
+    .catch(next);
 }
 const verifyAdmin = (req, res, next) => {
   if (!req.user) {
