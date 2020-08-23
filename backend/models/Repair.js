@@ -7,7 +7,10 @@ const Repairschema = new mongoose.Schema({
       ref: "Laptop",
     },
   ],
-
+  Email: {
+    type: String,
+    required: true,
+  },
   Detail: {
     type: String,
     required: true,
@@ -16,11 +19,19 @@ const Repairschema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Quantity: {
+    type: Number,
+    required: true,
+  },
+  Price: {
+    type: Number,
+    required: true,
+  },
   Totalamount: {
     type: Number,
     required: true,
   },
-  Date: {
+  Dates: {
     type: Date,
     required: true,
   },

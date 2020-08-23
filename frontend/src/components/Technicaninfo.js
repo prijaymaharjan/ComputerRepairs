@@ -37,9 +37,9 @@ class Technicaninfo extends Component {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Username</th>
-                  <th>Name</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
                   <th>Email</th>
                   <th>Mobile</th>
                   <th>Address</th>
@@ -48,39 +48,39 @@ class Technicaninfo extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>
-                    {this.state.User.array.forEach((user) => {
-                      if (user.Role === "Technican") {
-                        return <td key={user._id}>{user.Username}</td>;
-                      }
-                    })}
-                  </td>
-                  <td>Prijay Maharjan</td>
-                  <td>Chitwan</td>
-                  <td>Bharatpur-2</td>
-                  <td>3:00 PM</td>
-                  <td>2020-04-25</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      id="delete"
-                      name="delete"
-                    >
-                      <i className="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-info icon-space"
-                      id="delete"
-                      name="delete"
-                    >
-                      <i className="fa fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
+                {this.state.User.map((user) => {
+                  if (user.Role === "Technican") {
+                    return (
+                      <tr key={user._id}>
+                        <td>{user.Username}</td>
+                        <td>{user.Firstname}</td>
+                        <td>{user.Lastname}</td>
+                        <td>{user.Email}</td>
+                        <td>{user.Mobile}</td>
+                        <td>{user.Address}</td>
+                        <td>{user.Gender}</td>
+                        <td className="customerinfor">
+                          <button
+                            type="button"
+                            className="btn btn-info"
+                            id="delete"
+                            name="delete"
+                          >
+                            <i className="fa fa-edit"></i>
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-info icon-space"
+                            id="delete"
+                            name="delete"
+                          >
+                            <i className="fa fa-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  }
+                })}
               </tbody>
             </table>
           </div>

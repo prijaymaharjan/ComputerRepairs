@@ -57,10 +57,10 @@ class Register extends Component {
     return (
       <div
         className="Form"
-        onSubmit={this.handlesubmit}
         id="contact-form"
         action="#"
         method="post"
+        onSubmit={this.handlesubmit}
       >
         <div className="container">
           <div className="row">

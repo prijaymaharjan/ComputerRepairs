@@ -6,7 +6,6 @@ class Appointmentdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTodo: "",
       appointment: [],
       config: {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

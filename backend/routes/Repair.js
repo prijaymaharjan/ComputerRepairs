@@ -15,13 +15,13 @@ router
       .catch(next);
   })
   .post((req, res, next) => {
-    const { errors, isValid } = validation.repairInput(req.body);
-    if (!isValid) {
-      res.status(400).json({
-        status: "error",
-        message: errors,
-      });
-    }
+    // const { error, isValid } = validation.repairInput(req.body);
+    // if (!isValid) {
+    //   return res.status(400).json({
+    //     status: "error",
+    //     message: error,
+    //   });
+    // }
     Repair.create(req.body)
       .then((repair) => {
         res.status(201).json(repair);

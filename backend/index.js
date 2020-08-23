@@ -36,7 +36,6 @@ app.use((req, res, next) => {
   err.status = 404;
   next(err);
 });
-
 app.use((err, req, res, next) => {
   console.log(err.stack);
   res.status(err.status || 500);

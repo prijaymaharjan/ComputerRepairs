@@ -1,6 +1,27 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import axios from "axios";
 class Appointmentassign extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      appointment: [],
+      config: {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      },
+    };
+  }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/appointment", this.state.config)
+      .then((response) => {
+        this.setState({
+          appointment: response.data,
+        });
+      })
+      .catch((err) => console.log(err.response));
+  }
+
   render() {
     return (
       <div className="appointmentassign appointmentdate">
@@ -9,46 +30,47 @@ class Appointmentassign extends Component {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Technican Assign</th>
-                  <th>Username</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Time</th>
-                  <th>Date</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Subject</th>
+                  <th>Message</th>
                   <th>Done</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Saroj</td>
-                  <td>PrijayMaharjan</td>
-                  <td>Prijay Maharjan</td>
-                  <td>Chitwan</td>
-                  <td>Bharatpur-2</td>
-                  <td>3:00 PM</td>
-                  <td>2020-04-25</td>
-                  <td className="customerinfor">
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      id="delete"
-                      name="delete"
-                    >
-                      <i className="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-info icon-space"
-                      id="delete"
-                      name="delete"
-                    >
-                      <i className="fa fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
+                {this.state.appointment.map((currentTodo) => {
+                  return (
+                    <tr key={currentTodo._id}>
+                      <td>{currentTodo.Firstname} </td>
+                      <td>{currentTodo.Lastname} </td>
+                      <td>{currentTodo.Email} </td>
+                      <td>{currentTodo.Mobile} </td>
+                      <td>{currentTodo.Subject} </td>
+                      <td>{currentTodo.Message} </td>
+
+                      <td className="customerinfor">
+                        <button
+                          type="button"
+                          className="btn btn-info"
+                          id="edit"
+                          name="edit"
+                        >
+                          <i className="fa fa-edit"></i>
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-info icon-space"
+                          id="delete"
+                          name="delete"
+                        >
+                          <i className="fa fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

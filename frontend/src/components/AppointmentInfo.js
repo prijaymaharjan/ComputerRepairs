@@ -1,26 +1,52 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import axios from "axios";
 import { Alert } from "reactstrap";
 class AppointmentInfo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
+      email: "",
       detail: "",
+      paymentmethod: "",
       quantity: "",
       price: "",
-      total: "",
+      totalamount: "",
+      date: "",
+      appointment: [],
+      config: {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      },
     };
   }
+
   handleall = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
   handlesubmit = (e) => {
-    alert(JSON.stringify(this.state));
+    console.log(this.state);
     e.preventDefault();
+    const repairs = {
+      Email: this.state.email,
+      Detail: this.state.detail,
+      Paymentmethod: this.state.paymentmethod,
+      Quantity: this.state.quantity,
+      Price: this.state.price,
+      Totalamount: this.state.totalamount,
+      Dates: this.state.date,
+    };
+
+    axios
+      .post("http://localhost:3000/repair", repairs)
+      .then((response) => {
+        console.log("Request Successfully", response);
+      })
+      .catch((error) => {
+        console.log("Failed", error);
+      });
   };
   state = {
     visible: true,
@@ -30,7 +56,16 @@ class AppointmentInfo extends Component {
       visible: !this.state.visible,
     });
   }
-
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/appointment", this.state.config)
+      .then((response) => {
+        this.setState({
+          appointment: response.data,
+        });
+      })
+      .catch((err) => console.log(err.response));
+  }
   render() {
     return (
       <div className="customerinfo appointmentdate">
@@ -39,35 +74,38 @@ class AppointmentInfo extends Component {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Username</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Time</th>
-                  <th>Date</th>
-                  <th>Done</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>PrijayMaharjan</td>
-                  <td>Prijay Maharjan</td>
-                  <td>Chitwan</td>
-                  <td>Bharatpur-2</td>
-                  <td>3:00 PM</td>
-                  <td>2020-04-25</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      onClick={this.toggle.bind(this)}
-                    >
-                      Done
-                    </button>
-                  </td>
-                </tr>
+                {this.state.appointment.map((currentTodo) => {
+                  return (
+                    <tr key={currentTodo._id}>
+                      <td>{currentTodo.Firstname} </td>
+                      <td>{currentTodo.Lastname} </td>
+                      <td>{currentTodo.Email} </td>
+                      <td>{currentTodo.Mobile} </td>
+                      <td>{currentTodo.Subject} </td>
+                      <td>{currentTodo.Message} </td>
+
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-info"
+                          onClick={this.toggle.bind(this)}
+                        >
+                          Done
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             <Alert
@@ -79,20 +117,20 @@ class AppointmentInfo extends Component {
                 <div className="row">
                   <div className="col-lg-12">
                     <form
-                      action=""
-                      method=""
+                      action="#"
+                      method="post"
                       className="customerform"
                       onSubmit={this.handlesubmit}
                     >
                       <div className="form-group ">
-                        <label>Username</label>
+                        <label>Email</label>
                         <input
                           type="text"
                           className="form-control"
-                          id="exampleInputUsername"
-                          placeholder="Username"
-                          name="username"
-                          value={this.state.username}
+                          id="mail"
+                          placeholder="Email"
+                          name="email"
+                          value={this.state.email}
                           onChange={this.handleall}
                         />
                       </div>
@@ -101,10 +139,22 @@ class AppointmentInfo extends Component {
                         <input
                           type="text"
                           className="form-control"
-                          id="exampleInputDetail"
+                          id="detail"
                           placeholder="Detail"
                           name="detail"
                           value={this.state.detail}
+                          onChange={this.handleall}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>Payment Method</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="payment"
+                          placeholder="Payment Method"
+                          name="paymentmethod"
+                          value={this.state.paymentmethod}
                           onChange={this.handleall}
                         />
                       </div>
@@ -125,7 +175,7 @@ class AppointmentInfo extends Component {
                         <input
                           type="text"
                           className="form-control"
-                          id="exampleInputPrice"
+                          id="Price"
                           placeholder="Price"
                           name="price"
                           value={this.state.price}
@@ -133,18 +183,33 @@ class AppointmentInfo extends Component {
                         />
                       </div>
                       <div className="form-group">
-                        <label>Total</label>
+                        <label>Total Amount</label>
                         <input
                           type="text"
                           className="form-control"
-                          id="exampleInputTotal"
-                          placeholder="Total"
-                          name="total"
-                          value={this.state.total}
+                          id="totalamount"
+                          placeholder="Total Amount"
+                          name="totalamount"
+                          value={this.state.totalamount}
                           onChange={this.handleall}
                         />
                       </div>
-                      <button type="submit" className="btn btn-info">
+                      <div className="form-group">
+                        <label>Date</label>
+                        <input
+                          type="date"
+                          className="form-control"
+                          id="date"
+                          name="date"
+                          value={this.state.date}
+                          onChange={this.handleall}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-info"
+                        onClick={this.handlesubmit}
+                      >
                         Submit
                       </button>
                     </form>
