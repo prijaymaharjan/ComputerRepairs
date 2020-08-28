@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 class Repairinfo extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,18 @@ class Repairinfo extends Component {
       })
       .catch((err) => console.log(err.response));
   }
+  deleteUser = (userId) => {
+    axios
+      .delete(`http://localhost:3000/repair/${userId}`, this.state.config)
+      .then((response) => {
+        if (response.data != null) {
+          alert("Repair Deleted Successfully");
+          this.setState({
+            repair: this.state.repair.filter((user) => user._id !== userId),
+          });
+        }
+      });
+  };
   render() {
     return (
       <div className="repairinfo appointmentdate">
@@ -40,30 +53,29 @@ class Repairinfo extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.repair.map((currentTodo) => {
+                {this.state.repair.map((repair) => {
                   return (
-                    <tr key={currentTodo._id}>
-                      <td>{currentTodo.Email} </td>
-                      <td>{currentTodo.Detail} </td>
-                      <td>{currentTodo.Paymentmethod} </td>
-                      <td>{currentTodo.Quantity} </td>
-                      <td>{currentTodo.Price} </td>
-                      <td>{currentTodo.Totalamount} </td>
-                      <td>{currentTodo.Dates} </td>
+                    <tr key={repair._id}>
+                      <td>{repair.Email} </td>
+                      <td>{repair.Detail} </td>
+                      <td>{repair.Paymentmethod} </td>
+                      <td>{repair.Quantity} </td>
+                      <td>{repair.Price} </td>
+                      <td>{repair.Totalamount} </td>
+                      <td>{repair.Dates} </td>
                       <td className="customerinfor">
-                        <button
-                          type="button"
+                        <Link
+                          to={`editrepair/${repair._id}`}
                           className="btn btn-info"
-                          id="edit"
-                          name="edit"
                         >
                           <i className="fa fa-edit"></i>
-                        </button>
+                        </Link>
                         <button
                           type="button"
                           className="btn btn-info icon-space"
                           id="delete"
                           name="delete"
+                          onClick={this.deleteUser.bind(this, repair._id)}
                         >
                           <i className="fa fa-trash"></i>
                         </button>

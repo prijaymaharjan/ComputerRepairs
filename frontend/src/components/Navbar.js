@@ -1,23 +1,45 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import "../scss/Main.scss";
+import { Link, withRouter, Redirect } from "react-router-dom";
 
+import "../scss/Main.scss";
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isBasic: false,
+      isAdmin: false,
+      isTechnican: false,
+    };
+  }
   logOut(e) {
     e.preventDefault();
     localStorage.removeItem("token");
     this.props.history.push(`/`);
   }
+  profile(e) {
+    let users = localStorage.token;
+    if (users.Role === "Admin") this.setState({ isAdmin: true });
+    else if (users.Role === "Technican") this.setState({ isTechnican: true });
+    else this.setState({ isBasic: true });
+  }
   render() {
+    if (this.state.isAdmin) {
+      return <Redirect to="/Admin" />;
+    } else if (this.state.isTechnican) {
+      return <Redirect to="/technicanprofile" />;
+    } else if (this.state.isBasic) {
+      return <Redirect to="/Customprofile" />;
+    }
     const loginRegLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
-          <Link className="text-white" to="Register">
+          <Link className="text-white" to="register">
             <span className="register ">Register</span>
           </Link>
         </li>
         <li className="nav-item mr-4">
-          <Link className="text-white" to="Login">
+          <Link className="text-white" to="login">
             <span className="login ">Login</span>
           </Link>
         </li>
@@ -26,8 +48,8 @@ class Navbar extends Component {
     const userLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
-          <Link className="text-white" to="/">
-            <span className="register ">User</span>
+          <Link className="text-white" to="" onClick={this.profile.bind(this)}>
+            <span className="register ">Profile</span>
           </Link>
         </li>
         <li className="nav-item mr-4">
@@ -66,12 +88,6 @@ class Navbar extends Component {
               </li>
 
               <li className="nav-item ">
-                <Link className="nav-link text-white" to="Shop">
-                  shop
-                </Link>
-              </li>
-
-              <li className="nav-item ">
                 <Link className="nav-link text-white" to="Contact">
                   contact
                 </Link>
@@ -79,18 +95,7 @@ class Navbar extends Component {
             </ul>
           </div>
           <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
-            <li className="nav-item mr-4 ">
-              <Link className="text-white" to="Navcart">
-                <span className="card-icon">
-                  <span>
-                    <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                  </span>
-                </span>
-                <span className="card-num" id="topActionCartNumber">
-                  0
-                </span>
-              </Link>
-            </li>
+            <li className="nav-item mr-4 "></li>
           </ul>
           {localStorage.token ? userLink : loginRegLink}
         </nav>

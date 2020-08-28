@@ -2,9 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const customer = require("./routes/Customer");
+const session = require("express-session");
 const Appointment = require("./routes/Appointment");
-const Technican = require("./routes/Technican");
+
 const Laptop = require("./routes/Laptop");
 const Repair = require("./routes/Repair");
 const Item = require("./routes/Item");
@@ -16,15 +16,24 @@ const uploadRouter = require("./routes/upload");
 require("dotenv/config");
 
 const app = express();
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: parseInt(process.env.SESSION_MAX_AGE),
+    },
+  })
+);
 app.use(cors("*"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/user", User);
-app.use("/customer", auth.verifyUser, customer);
 app.use("/appointment", Appointment);
-app.use("/technican", Technican);
 app.use("/laptop", Laptop);
 app.use("/repair", Repair);
 app.use("/item", Item);

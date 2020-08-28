@@ -31,7 +31,6 @@ class Login extends Component {
     axios
       .post("http://localhost:3000/user/login", user)
       .then((response) => {
-        console.log(this.state);
         localStorage.setItem("token", response.data.token);
         let users = jwtDecode(response.data.token.split(" ")[1]);
         if (users.Role === "Admin") this.setState({ isAdmin: true });
@@ -64,7 +63,7 @@ class Login extends Component {
           <div className="row">
             <div className="wrapper fadeInDown">
               <div id="formContent">
-                <form>
+                <form action="/login" method="post">
                   <input
                     type="text"
                     id="username"

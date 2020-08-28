@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
 import { Form, FormGroup, Input } from "reactstrap";
+
 import Footer from "./Footer";
 import axios from "axios";
 
@@ -27,9 +28,12 @@ class Register extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
   handlesubmit = (e) => {
     console.log(this.state);
+
     e.preventDefault();
+
     const reg = {
       Username: this.state.username,
       Password: this.state.password,
@@ -43,6 +47,7 @@ class Register extends Component {
       Address: this.state.address,
       Professional: this.state.professional,
     };
+
     axios
       .post("http://localhost:3000/user/register", reg)
       .then((response) => {
@@ -53,12 +58,13 @@ class Register extends Component {
         console.log("Failed", error);
       });
   };
+
   render() {
     return (
       <div
         className="Form"
         id="contact-form"
-        action="#"
+        action="/register"
         method="post"
         onSubmit={this.handlesubmit}
       >
@@ -66,7 +72,7 @@ class Register extends Component {
           <div className="row">
             <div className="wrapper fadeInDown">
               <div id="formContent">
-                <Form method="post" action="#">
+                <Form method="post" action="/register">
                   <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                     <Input
                       type="text"
@@ -77,6 +83,9 @@ class Register extends Component {
                       value={this.state.username}
                       onChange={this.handleall}
                     />
+                    <small className="text-danger">
+                      {this.state.usernameErr}
+                    </small>
                   </FormGroup>
                   <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                     <input

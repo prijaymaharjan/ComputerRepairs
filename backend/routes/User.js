@@ -158,10 +158,43 @@ router.get("/customerprofile", (req, res) => {
     });
 });
 
-router.get("/all", auth.verifyUser, auth.verifyAdmin, (req, res) => {
-  User.find().then((users) => {
-    res.json(users);
-  });
+router.get("/all", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch(next);
+});
+router.get("/:userId", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
+  User.findById(req.params.userId)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch(next);
+});
+router.put("/:userId", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
+  User.findByIdAndUpdate(
+    req.params.userId,
+
+    { $set: req.body },
+    { new: true }
+  )
+    .then((user) => {
+      res.json(user);
+    })
+    .catch(next);
 });
 
+router.delete(
+  "/:userId",
+  auth.verifyUser,
+  auth.verifyAdmin,
+  (req, res, next) => {
+    User.findByIdAndDelete(req.params.userId)
+      .then((user) => {
+        res.json({ status: "User deleted!", user: user });
+      })
+      .catch(next);
+  }
+);
 module.exports = router;

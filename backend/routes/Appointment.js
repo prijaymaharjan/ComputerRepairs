@@ -1,7 +1,5 @@
 const express = require("express");
 const Appointment = require("../models/Appointment");
-const Customer = require("../models/Customer");
-const Technican = require("../models/Technican");
 const router = express("Router");
 const validation = require("../validation");
 

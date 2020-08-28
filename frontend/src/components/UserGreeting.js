@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
+import Axios from "axios";
 
 class UserGreeting extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      register_id: "",
+      id: "",
       username: "",
       firstname: "",
       lastname: "",
@@ -16,7 +17,7 @@ class UserGreeting extends Component {
       mobile: "",
       address: "",
       professional: "",
-      register: [],
+
       config: {
         headers: {
           Authorization: localStorage.getItem("token"),
@@ -24,6 +25,7 @@ class UserGreeting extends Component {
       },
     };
   }
+
   handleall = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -31,6 +33,22 @@ class UserGreeting extends Component {
   };
   handlesubmit = (e) => {
     console.log(this.state);
+    const edit = {
+      Username: this.state.username,
+      Firstname: this.state.firstname,
+      Lastname: this.state.lastname,
+      Gender: this.state.gender,
+      DateofBirth: this.state.dateofbirth,
+      Email: this.state.email,
+      Mobile: this.state.mobile,
+      Address: this.state.address,
+      Professional: this.state.professional,
+    };
+    Axios.put(
+      `http://localhost:3000/user`,
+      edit,
+      this.state.config
+    ).then((res) => {});
     e.preventDefault();
   };
   render() {
@@ -155,7 +173,7 @@ class UserGreeting extends Component {
             <div className="profile-button">
               <button
                 className="text-center fadeIn fourth profilebutton "
-                onClick={this.props.clickData}
+                onClick={(this.props.clickData, this.handlesubmit)}
               >
                 Save Profile
               </button>

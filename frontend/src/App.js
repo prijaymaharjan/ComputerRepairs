@@ -12,7 +12,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Appointment from "./components/Appointment";
-import Shop from "./components/Shop";
+
 import Navcart from "./components/Navcart";
 //import AdminRoute from "./components/AdminRoute";
 //import CustomerRoute from "./components/CustomerRoute";
@@ -20,6 +20,10 @@ import Navcart from "./components/Navcart";
 import Admin from "./components/Admin";
 import Customprofile from "./components/Customprofile";
 import Technicanprofile from "./components/Technicanprofile";
+import Edit from "./components/Edit";
+import Editrepair from "./components/Editrepair";
+
+import Editappointment from "./components/Editappointment";
 //Main service
 import Services from "./components/Services";
 
@@ -39,10 +43,17 @@ function App() {
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact component={Register}></Route>
           <Route path="/appointment" exact component={Appointment}></Route>
-          <Route path="/shop" exact component={Shop}></Route>
           <Route path="/navcart" exact component={Navcart}></Route>
           <Route path="/admin" exact component={Admin}></Route>
           <Route path="/customprofile" exact component={Customprofile}></Route>
+          <Route path="/edit/:id" exact component={Edit}></Route>
+          <Route path="/editrepair/:id" exact component={Editrepair}></Route>
+          <Route
+            path="/editappointment/:id"
+            exact
+            component={Editappointment}
+          ></Route>
+
           <Route
             path="/technicanprofile"
             exact

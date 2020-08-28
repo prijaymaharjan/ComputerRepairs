@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 class Appointmentassign extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,20 @@ class Appointmentassign extends Component {
       })
       .catch((err) => console.log(err.response));
   }
-
+  deleteUser = (userId) => {
+    axios
+      .delete(`http://localhost:3000/appointment/${userId}`, this.state.config)
+      .then((response) => {
+        if (response.data != null) {
+          alert("Appointment Deleted Successfully");
+          this.setState({
+            appointment: this.state.appointment.filter(
+              (user) => user._id !== userId
+            ),
+          });
+        }
+      });
+  };
   render() {
     return (
       <div className="appointmentassign appointmentdate">
@@ -40,30 +54,29 @@ class Appointmentassign extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.appointment.map((currentTodo) => {
+                {this.state.appointment.map((user) => {
                   return (
-                    <tr key={currentTodo._id}>
-                      <td>{currentTodo.Firstname} </td>
-                      <td>{currentTodo.Lastname} </td>
-                      <td>{currentTodo.Email} </td>
-                      <td>{currentTodo.Mobile} </td>
-                      <td>{currentTodo.Subject} </td>
-                      <td>{currentTodo.Message} </td>
+                    <tr key={user._id}>
+                      <td>{user.Firstname} </td>
+                      <td>{user.Lastname} </td>
+                      <td>{user.Email} </td>
+                      <td>{user.Mobile} </td>
+                      <td>{user.Subject} </td>
+                      <td>{user.Message} </td>
 
                       <td className="customerinfor">
-                        <button
-                          type="button"
+                        <Link
+                          to={`editappointment/${user._id}`}
                           className="btn btn-info"
-                          id="edit"
-                          name="edit"
                         >
                           <i className="fa fa-edit"></i>
-                        </button>
+                        </Link>
                         <button
                           type="button"
                           className="btn btn-info icon-space"
                           id="delete"
                           name="delete"
+                          onClick={this.deleteUser.bind(this, user._id)}
                         >
                           <i className="fa fa-trash"></i>
                         </button>
