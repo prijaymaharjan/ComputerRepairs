@@ -199,7 +199,7 @@ class Register extends Component {
                   </FormGroup>
                   <input
                     type="submit"
-                    onClick={this.handleall}
+                    onClick={this.handlesubmit}
                     className="text-center fadeIn fourth"
                     value="Register"
                   />
