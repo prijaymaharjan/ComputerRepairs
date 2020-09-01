@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import "../scss/Main.scss";
 import Axios from "axios";
-
+import jwt_decode from "jwt-decode";
 class UserGreeting extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: "",
       username: "",
       firstname: "",
       lastname: "",
@@ -17,7 +16,7 @@ class UserGreeting extends Component {
       mobile: "",
       address: "",
       professional: "",
-
+      User: [],
       config: {
         headers: {
           Authorization: localStorage.getItem("token"),
@@ -25,14 +24,32 @@ class UserGreeting extends Component {
       },
     };
   }
+  componentDidMount() {
+    const token = localStorage.token;
+    const decoded = jwt_decode(token);
 
+    this.setState({
+      username: decoded.Username,
+      firstname: decoded.Firstname,
+      lastname: decoded.Lastname,
+      email: decoded.Email,
+      mobile: decoded.Mobile,
+      address: decoded.Address,
+      gender: decoded.Gender,
+      professional: decoded.Professional,
+    });
+  }
   handleall = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
   handlesubmit = (e) => {
-    console.log(this.state);
+    e.preventDefault();
+    const token = localStorage.token;
+    const decoded = jwt_decode(token);
+    const id = decoded.id;
+    console.log(id);
     const edit = {
       Username: this.state.username,
       Firstname: this.state.firstname,
@@ -44,12 +61,14 @@ class UserGreeting extends Component {
       Address: this.state.address,
       Professional: this.state.professional,
     };
-    Axios.put(
-      `http://localhost:3000/user`,
-      edit,
-      this.state.config
-    ).then((res) => {});
-    e.preventDefault();
+    Axios.put(`http://localhost:3000/user/${id}`, edit, this.state.config)
+      .then((res) => {
+        alert("Succeddfully Update");
+        console.log("Request Successfully", res);
+      })
+      .catch((error) => {
+        console.log("Failed", error);
+      });
   };
   render() {
     return (
@@ -176,6 +195,12 @@ class UserGreeting extends Component {
                 onClick={(this.props.clickData, this.handlesubmit)}
               >
                 Save Profile
+              </button>
+              <button
+                className="text-center fadeIn fourth profilebutton "
+                onClick={this.props.clickData}
+              >
+                Go Back To Profile
               </button>
             </div>
           </form>

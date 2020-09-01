@@ -48,7 +48,6 @@ class Editrepair extends Component {
   };
   handlesubmit = (e) => {
     const id = this.props.match.params.id;
-    console.log(this.state);
     e.preventDefault();
     const regs = {
       email: this.state.email,

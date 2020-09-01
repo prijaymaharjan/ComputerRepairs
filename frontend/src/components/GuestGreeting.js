@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
+
 class GuestGreeting extends Component {
   constructor() {
     super();
@@ -18,7 +19,9 @@ class GuestGreeting extends Component {
   componentDidMount() {
     const token = localStorage.token;
     const decoded = jwt_decode(token);
+    console.log(decoded.id);
     this.setState({
+      id: decoded.id,
       Username: decoded.Username,
       Firstname: decoded.Firstname,
       Lastname: decoded.Lastname,

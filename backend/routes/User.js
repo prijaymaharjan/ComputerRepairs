@@ -37,7 +37,7 @@ router.post("/register", (req, res, next) => {
         return next(err);
       }
       bcrypt
-        .hash(Password, 8)
+        .hash(Password, 10)
         .then((hashed) => {
           User.create({
             Username,
@@ -108,56 +108,6 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/technicanprofile", (req, res) => {
-  const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
-  User.findOne({
-    _id: decoded._id,
-  })
-    .then((user) => {
-      if (user) {
-        res.json(user);
-      } else {
-        res.send("User does not Exist");
-      }
-    })
-    .catch((err) => {
-      res.send("error:" + err);
-    });
-});
-router.get("/admin", (req, res) => {
-  const decoded = jwt.verify(req.headers["authorization"], process.env.SECRET);
-  User.findOne({
-    _id: decoded._id,
-  })
-    .then((user) => {
-      if (user) {
-        res.json(user);
-      } else {
-        res.send("User does not Exist");
-      }
-    })
-    .catch((err) => {
-      res.send("error:" + err);
-    });
-});
-
-router.get("/customerprofile", (req, res) => {
-  const decoded = jwt.verify(req.headers.authorization, process.env.SECRET);
-  User.findOne({
-    _id: decoded._id,
-  })
-    .then((user) => {
-      if (user) {
-        res.json(user);
-      } else {
-        res.send("User does not Exist");
-      }
-    })
-    .catch((err) => {
-      res.send("error:" + err);
-    });
-});
-
 router.get("/all", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
   User.find()
     .then((users) => {
@@ -172,7 +122,7 @@ router.get("/:userId", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     })
     .catch(next);
 });
-router.put("/:userId", auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
+router.put("/:userId", auth.verifyUser, (req, res, next) => {
   User.findByIdAndUpdate(
     req.params.userId,
 

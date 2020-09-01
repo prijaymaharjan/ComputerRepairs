@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../scss/Main.scss";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-// import jwtDecode from "jwt-decode";
+
 class Technicaninfo extends Component {
   constructor(props) {
     super(props);
