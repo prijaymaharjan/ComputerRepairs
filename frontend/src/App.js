@@ -14,9 +14,8 @@ import Register from "./components/Register";
 import Appointment from "./components/Appointment";
 
 import Navcart from "./components/Navcart";
-import AdminRoute from "./components/AdminRoute";
-import CustomerRoute from "./components/CustomerRoute";
-import TechnicanRoute from "./components/TechnicanRoute";
+import PrivateRoute from "./components/PrivateRoute";
+
 import Admin from "./components/Admin";
 import Customprofile from "./components/Customprofile";
 import Technicanprofile from "./components/Technicanprofile";
@@ -44,12 +43,12 @@ function App() {
           <Route path="/register" exact component={Register}></Route>
           <Route path="/appointment" exact component={Appointment}></Route>
           <Route path="/navcart" exact component={Navcart}></Route>
-          <AdminRoute path="/admin" exact component={Admin}></AdminRoute>
-          <CustomerRoute
+          <PrivateRoute path="/admin" exact component={Admin}></PrivateRoute>
+          <PrivateRoute
             path="/customprofile"
             exact
             component={Customprofile}
-          ></CustomerRoute>
+          ></PrivateRoute>
           <Route path="/edit/:id" exact component={Edit}></Route>
           <Route path="/editrepair/:id" exact component={Editrepair}></Route>
           <Route
@@ -58,11 +57,11 @@ function App() {
             component={Editappointment}
           ></Route>
 
-          <TechnicanRoute
+          <PrivateRoute
             path="/technicanprofile"
             exact
             component={Technicanprofile}
-          ></TechnicanRoute>
+          ></PrivateRoute>
         </Switch>
       </div>
     </BrowserRouter>

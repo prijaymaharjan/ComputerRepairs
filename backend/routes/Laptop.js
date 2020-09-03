@@ -1,5 +1,5 @@
 const express = require("express");
-
+const Laptop = require("../models/Laptop");
 const router = express.Router();
 const validation = require("../validation");
 
@@ -15,11 +15,11 @@ router
   })
 
   .post((req, res, next) => {
-    const { error, isValid } = validation.laptopInput(req.body);
+    const { errors, isValid } = validation.laptopInput(req.body);
     if (!isValid) {
       return res.status(400).json({
         status: "error",
-        message: error,
+        message: errors,
       });
     }
     Laptop.create(req.body)

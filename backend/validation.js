@@ -204,68 +204,10 @@ const laptopInput = (data) => {
   };
 };
 
-const repairInput = (data) => {
-  let errors = {};
-  if (data.Email) {
-    if (!validator.isEmail(data.Email.trim())) {
-      errors.Email = "Email Not Valid";
-    }
-  } else {
-    errors.Email = "Email Is Required";
-  }
-  if (data.Detail) {
-    if (!validator.isLength(data.Detail.trim(), { min: 3, max: 60 })) {
-      errors.Detail = "Detail must be between 6 and 60 charaters";
-    }
-  } else {
-    errors.Detail = "Detail is required";
-  }
-  if (data.Paymentmethod) {
-    if ((!validator.isLength(data.Paymentmethod), { min: 1, max: 60 })) {
-      errors.Paymentmethod = "Payment Method Invalid";
-    }
-  } else {
-    errors.Paymentmethod = "Payment is required";
-  }
-  if (data.Quantity) {
-    if (!validator.isInt(data.Quantity)) {
-      errors.Quantity = "Quantity InValid";
-    }
-  } else {
-    errors.Quantity = "Quantity is required";
-  }
-  if (data.Price) {
-    if (!validator.isInt(data.Price)) {
-      errors.Price = "Price InValid";
-    }
-  } else {
-    errors.Price = "Price is required";
-  }
-  if (data.Totalamount) {
-    if (!validator.isInt(data.Totalamount)) {
-      errors.Totalamount = "Total Amount Invalid";
-    }
-  } else {
-    errors.Totalamount = "Total Amount is required";
-  }
-
-  if (data.Dates) {
-    if (!validator.isDate(data.Dates)) {
-      errors.Dates = "Date Not Valid";
-    }
-  } else {
-    errors.Dates = "Date Is Required";
-  }
-  return {
-    errors,
-    isValid: Object.keys(errors).length == 0,
-  };
-};
-
 module.exports = {
   registerInput,
   appointmentInput,
   itemInput,
-  repairInput,
+
   laptopInput,
 };

@@ -9,11 +9,11 @@ const auth = require("./Auth");
 
 const validation = require("../validation");
 router.post("/register", (req, res, next) => {
-  const { error, isValid } = validation.registerInput(req.body);
+  const { errors, isValid } = validation.registerInput(req.body);
   if (!isValid) {
     res.status(400).json({
       status: "error",
-      message: error,
+      message: errors,
     });
   }
   let {
@@ -53,7 +53,7 @@ router.post("/register", (req, res, next) => {
             Professional,
           })
             .then((users) => {
-              res.json({ status: "Registration Successfully!" });
+              res.status(201).json({ status: "Registration Successfully!" });
             })
             .catch(next);
         })

@@ -97,7 +97,7 @@ class Navbar extends Component {
           <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
             <li className="nav-item mr-4 "></li>
           </ul>
-          {localStorage.token ? userLink : loginRegLink}
+          {localStorage.token ? userLink :}
         </nav>
       </div>
     );

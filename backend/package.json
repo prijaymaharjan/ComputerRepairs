@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "jest --watchAll --coverage"
   },
   "author": "prijaymaharjan",
   "license": "ISC",
   "dependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -22,6 +23,9 @@
     "validator.js": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "jest": "^26.4.2",
+    "jest-environment-node": "^26.3.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }

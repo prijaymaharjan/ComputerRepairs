@@ -2,7 +2,7 @@ const express = require("express");
 const Repair = require("../models/Repair");
 const Laptop = require("../models/Laptop");
 const validation = require("../validation");
-
+const auth = require("./Auth");
 const router = express.Router();
 
 router
@@ -15,13 +15,6 @@ router
       .catch(next);
   })
   .post((req, res, next) => {
-    // const { error, isValid } = validation.repairInput(req.body);
-    // if (!isValid) {
-    //   return res.status(400).json({
-    //     status: "error",
-    //     message: error,
-    //   });
-    // }
     Repair.create(req.body)
       .then((repair) => {
         res.status(201).json(repair);

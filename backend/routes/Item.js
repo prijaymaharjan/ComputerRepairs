@@ -2,7 +2,7 @@ const express = require("express");
 const Item = require("../models/Item");
 const Repair = require("../models/Repair");
 const validation = require("../validation");
-
+const auth = require("../routes/Auth");
 const router = express.Router();
 
 router

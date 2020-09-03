@@ -2,7 +2,7 @@ const express = require("express");
 const Appointment = require("../models/Appointment");
 const router = express("Router");
 const validation = require("../validation");
-
+const auth = require("../routes/Auth");
 router
   .route("/")
   .get((req, res, next) => {
