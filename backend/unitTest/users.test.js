@@ -2,9 +2,9 @@ const request = require("supertest");
 const express = require("express");
 
 const user = require("../routes/User");
-
 const app = express();
 app.use(express.json());
+
 app.use("/user", user);
 
 require("dotenv").config();
