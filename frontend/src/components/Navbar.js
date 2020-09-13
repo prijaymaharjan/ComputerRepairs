@@ -3,34 +3,13 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 
 import "../scss/Main.scss";
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isBasic: false,
-      isAdmin: false,
-      isTechnican: false,
-    };
-  }
   logOut(e) {
     e.preventDefault();
     localStorage.removeItem("token");
     this.props.history.push(`/`);
   }
-  profile(e) {
-    let users = localStorage.token;
-    if (users.Role === "Admin") this.setState({ isAdmin: true });
-    else if (users.Role === "Technican") this.setState({ isTechnican: true });
-    else this.setState({ isBasic: true });
-  }
+
   render() {
-    if (this.state.isAdmin) {
-      return <Redirect to="/Admin" />;
-    } else if (this.state.isTechnican) {
-      return <Redirect to="/technicanprofile" />;
-    } else if (this.state.isBasic) {
-      return <Redirect to="/Customprofile" />;
-    }
     const loginRegLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
@@ -48,7 +27,7 @@ class Navbar extends Component {
     const userLink = (
       <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
         <li className="nav-item mr-4 ">
-          <Link className="text-white" to="" onClick={this.profile.bind(this)}>
+          <Link className="text-white" to="">
             <span className="register ">Profile</span>
           </Link>
         </li>
@@ -97,7 +76,7 @@ class Navbar extends Component {
           <ul className="nav navbar-nav navbar-right my-2 my-lg-0">
             <li className="nav-item mr-4 "></li>
           </ul>
-          {localStorage.token ? userLink :}
+          {localStorage.token ? userLink : loginRegLink}
         </nav>
       </div>
     );

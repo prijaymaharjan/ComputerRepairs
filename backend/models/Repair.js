@@ -1,12 +1,6 @@
 const mongoose = require("mongoose");
-
 const Repairschema = new mongoose.Schema({
-  Laptops: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Laptop",
-    },
-  ],
+  Laptops: [{ type: mongoose.Schema.Types.ObjectId, ref: "Laptop" }],
   Email: {
     type: String,
     required: true,

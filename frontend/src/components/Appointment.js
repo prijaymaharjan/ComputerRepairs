@@ -37,6 +37,7 @@ class Appointment extends Component {
     axios
       .post("http://localhost:3000/appointment", userObject)
       .then((response) => {
+        alert("Appointment Successfully");
         console.log("Request Succeded ", response);
       })
       .catch((error) => {

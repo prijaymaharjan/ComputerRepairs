@@ -43,6 +43,7 @@ function App() {
           <Route path="/register" exact component={Register}></Route>
           <Route path="/appointment" exact component={Appointment}></Route>
           <Route path="/navcart" exact component={Navcart}></Route>
+
           <PrivateRoute path="/admin" exact component={Admin}></PrivateRoute>
           <PrivateRoute
             path="/customprofile"
