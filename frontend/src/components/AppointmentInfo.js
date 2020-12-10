@@ -42,6 +42,7 @@ class AppointmentInfo extends Component {
     axios
       .post("http://localhost:3000/repair", repairs, this.config)
       .then((response) => {
+        alert("Successfully Repair");
         console.log("Request Successfully", response);
       })
       .catch((error) => {

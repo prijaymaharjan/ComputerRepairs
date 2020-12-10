@@ -43,6 +43,7 @@ class Registeradmin extends Component {
     axios
       .post("http://localhost:3000/user/register", regs)
       .then((response) => {
+        alert("Successfully Register");
         console.log("Request Successfully", response);
       })
       .catch((error) => {
