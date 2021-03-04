@@ -44,12 +44,12 @@ function App() {
           <Route path="/appointment" exact component={Appointment}></Route>
           <Route path="/navcart" exact component={Navcart}></Route>
 
-          <PrivateRoute path="/admin" exact component={Admin}></PrivateRoute>
-          <PrivateRoute
+          <Route path="/admin" exact component={Admin}></Route>
+          <Route
             path="/customprofile"
             exact
             component={Customprofile}
-          ></PrivateRoute>
+          ></Route>
           <Route path="/edit/:id" exact component={Edit}></Route>
           <Route path="/editrepair/:id" exact component={Editrepair}></Route>
           <Route
@@ -58,11 +58,11 @@ function App() {
             component={Editappointment}
           ></Route>
 
-          <PrivateRoute
+          <Route
             path="/technicanprofile"
             exact
             component={Technicanprofile}
-          ></PrivateRoute>
+          ></Route>
         </Switch>
       </div>
     </BrowserRouter>
