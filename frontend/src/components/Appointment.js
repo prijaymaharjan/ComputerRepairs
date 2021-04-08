@@ -82,11 +82,11 @@ class Appointment extends Component {
                   <input
                     type="text"
                     className="form-control fadeIn second"
-                    id="firstname"
-                    placeholder="First Name"
+                    id="devicename"
+                    placeholder="Device Name"
                     required=""
-                    name="firstname"
-                    value={this.state.firstname}
+                    name="devicename"
+                    value={this.state.devicename}
                     onChange={this.handleall}
                   />
                 </div>
@@ -94,10 +94,10 @@ class Appointment extends Component {
                   <input
                     type="text"
                     className="form-control fadeIn third"
-                    id="lastname"
-                    placeholder="Last Name"
+                    id="devicemodel"
+                    placeholder="Device Model"
                     name="lastname"
-                    value={this.state.lastname}
+                    value={this.state.devicemodel}
                     onChange={this.handleall}
                     required=""
                   />
@@ -108,10 +108,10 @@ class Appointment extends Component {
                   <input
                     type="text"
                     className="form-control fadeIn fourth"
-                    id="email"
-                    placeholder="Email"
-                    name="email"
-                    value={this.state.email}
+                    id="appointmentdate"
+                    placeholder="Appointment Date"
+                    name="appointmentdate"
+                    value={this.state.appointmentdate}
                     onChange={this.handleall}
                     required=""
                   />
@@ -120,35 +120,23 @@ class Appointment extends Component {
                   <input
                     type="text"
                     className="form-control fadeIn five"
-                    id="mobile"
-                    placeholder="Mobile"
-                    name="mobile"
-                    value={this.state.mobile}
+                    id="location"
+                    placeholder="Location"
+                    name="location"
+                    value={this.state.location}
                     onChange={this.handleall}
                     required=""
                   />
                 </div>
               </div>
-              <div className="form-group ">
-                <input
-                  type="text"
-                  className="form-control fadeIn six"
-                  id="subject"
-                  placeholder="Subject"
-                  name="subject"
-                  value={this.state.subject}
-                  onChange={this.handleall}
-                  required=""
-                />
-              </div>
-
+              
               <div className="form-group">
                 <textarea
                   className="form-control fadeIn seven"
                   rows="5"
-                  name="message"
-                  placeholder="Message"
-                  value={this.state.message}
+                  name="issue"
+                  placeholder="Issue"
+                  value={this.state.issue}
                   onChange={this.handleall}
                   required=""
                 />

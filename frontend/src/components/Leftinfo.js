@@ -33,6 +33,15 @@ const Leftinfo = (props) => {
                 <ListGroup.Item action href="#link6">
                   {props.sevenlink}
                 </ListGroup.Item>
+                <ListGroup.Item action href="#link7">
+                  {props.eightlink}
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link8">
+                  {props.ninelink}
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link9">
+                  {props.tenlink}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col sm={9}>
@@ -43,6 +52,9 @@ const Leftinfo = (props) => {
                 <Tab.Pane eventKey="#link4">{props.four}</Tab.Pane>
                 <Tab.Pane eventKey="#link5">{props.five}</Tab.Pane>
                 <Tab.Pane eventKey="#link6">{props.six}</Tab.Pane>
+                <Tab.Pane eventKey="#link7">{props.seven}</Tab.Pane>
+                <Tab.Pane eventKey="#link8">{props.eight}</Tab.Pane>
+                <Tab.Pane eventKey="#link9">{props.nine}</Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>

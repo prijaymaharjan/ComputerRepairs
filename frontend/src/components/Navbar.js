@@ -65,12 +65,17 @@ class Navbar extends Component {
                   Our Services
                 </Link>
               </li>
-
+              <li className="nav-item ">
+                <Link className="nav-link text-white" to="Product">
+                  Product
+                </Link>
+              </li>
               <li className="nav-item ">
                 <Link className="nav-link text-white" to="Contact">
                   contact
                 </Link>
               </li>
+              
             </ul>
           </div>
           <ul className="nav navbar-nav navbar-right my-2 my-lg-0">

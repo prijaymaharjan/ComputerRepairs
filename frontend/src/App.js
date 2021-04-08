@@ -25,9 +25,15 @@ import Editrepair from "./components/Editrepair";
 import Editappointment from "./components/Editappointment";
 //Main service
 import Services from "./components/Services";
-
+import Product from "./components/Product";
+import Productinfo from "./components/Productinfo";
+import AddProduct from "./components/AddProduct";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import Viewproduct from "./components/Viewproduct";
+import ViewReview from "./components/ViewReview";
+import editreviw from "./components/Editreview";
+import Editreview from "./components/Editreview";
+import Editviewproduct from "./components/Editviewproduct";
 function App() {
   return (
     <BrowserRouter>
@@ -63,6 +69,13 @@ function App() {
             exact
             component={Technicanprofile}
           ></Route>
+          <Route path="/product" exact component={Product}></Route>
+          <Route path="/ProductInfo" exact component={Productinfo}></Route>
+          <Route path="/addproduct" exact component={AddProduct}></Route>
+          <Route path="/viewproduct" exact component={Viewproduct}></Route>
+          <Route path="/viewreview" exact component={ViewReview}></Route>
+          <Route path="/editreview/:id" exact component={Editreview}></Route>
+          <Route path="/editviewproduct/:id" exact component={Editviewproduct}></Route>
         </Switch>
       </div>
     </BrowserRouter>

@@ -1,0 +1,72 @@
+
+@import "global";
+.productinfo{
+    .Product{
+        .img{
+            height: 250px;
+            width: 359px;
+        }
+        .inf{
+            margin-left:162px;
+        }
+        .lapinfo{
+            border-bottom: 2px solid #fe7800;
+        }
+        .lapprice{
+            color: black;
+            font-size: 28px;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+            display: block;
+        }
+        .quantity input[type=number]{
+            cursor: text;
+             margin: 0em;
+             font: 400 13.3333px Arial;
+                padding: 1px 2px;
+             font-family: inherit;
+             font-size: inherit;
+             line-height: inherit;
+             width: 64%;
+        }
+        .single-add{
+            background-color: red;
+            padding: 15px;
+            border: none;
+            width: 64%;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            color: white;
+            
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .Description{
+            h5{
+                float:left;
+                font-weight: 600;
+                color: #fe7800;
+            }
+            
+        }
+       
+    
+    }
+    .Review{
+        h5{
+            margin-left: -1056px;
+            font-weight: 600;
+            color: #fe7800;
+        }
+        .rvs{
+            margin-left: -58px;
+
+            button{
+               background-color:#fe7800;
+               border:none;
+               font-weight:600; 
+            }
+        }
+    }
+}

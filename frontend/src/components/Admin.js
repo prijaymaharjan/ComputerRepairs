@@ -8,6 +8,10 @@ import Myaccount from "./Myaccount";
 import Appointmentassign from "./Appointmentassign";
 import Repairinfo from "./Repairinfo";
 import Registeradmin from "./Registeradmin";
+import addproduct from "./AddProduct";
+import AddProduct from "./AddProduct";
+import Viewproduct from "./Viewproduct";
+import ViewReview from "./ViewReview";
 class Admin extends Component {
   render() {
     return (
@@ -20,12 +24,22 @@ class Admin extends Component {
           fivelink="Appointment Info"
           sixlink="Repair Info"
           sevenlink="Register"
+       
+          eightlink="Add Product"
+          ninelink="View Product"
+          tenlink="View Reviews"
+
+
+
           first={<Myaccount />}
           second={<Technicaninfo />}
           third={<Customerinfor />}
           four={<Appointmentassign />}
           five={<Repairinfo />}
           six={<Registeradmin />}
+           seven = {<AddProduct/>}
+           eight={<Viewproduct/>}
+           nine={<ViewReview/>}
         />
         <Footer />
       </div>
